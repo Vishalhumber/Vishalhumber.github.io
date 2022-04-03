@@ -1,5 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
-
+/* .heading {
+    height: fit-content;
+    background-color: rgb(198, 179, 216);
+    font-size: 70px;
+    font-family: 'Cutive Mono', monospace;
+    text-align: justify;
+} */
 
 * {
 
@@ -12,23 +17,23 @@
 
 .sidebar {
 
-    background-color: rgb(204, 220, 221);
+    background-image: linear-gradient(#9dc8f8, #001a3a);
     width: 20vw;
     font-family: 'Cutive Mono', monospace;
 }
 
 .sidebar nav {
 
-    background-color: rgb(237, 231, 231);
     width: 10vw;
-    padding: 60px;
+    font-size: 30px;
+    padding: 80px;
 }
 
 .sidebar nav li {
 
     list-style: none;
 
-    font-size: 30px;
+    font-size: 40px;
 
     padding: 33px;
 
@@ -43,21 +48,23 @@
 
 .infoContainer {
 
-    background-color: rgb(248, 251, 248);
-    height: 140vh;
+    background-image: linear-gradient(#89a0bc, #f6faff);
+    height: 80vh;
     width: 30 vh;
     margin: auto;
     margin: 20px auto;
     display: flex;
     justify-content: space-around;
+    font-size: 40px;
+    padding: 70px;
 
 }
 
 .main {
 
-    background-color: rgb(110, 148, 236);
+    background-color: rgb(218, 221, 229);
     height: fit-content;
-    margin: 90px;
+    margin: 20px;
 }
 
 .devinfo {
@@ -91,27 +98,81 @@
 }
 
 .buttons {
-
-    color: beige;
+    margin: 8px 4px;
+    size: 20px;
 }
 
 .devpic img {
     height: max-content;
     display: flex;
-    width: auto;
+    width: 50vh;
 
 
 }
 
 .Aboutme {
     display: flex;
-    flex-direction: calc();
-    font-family: Arial, Helvetica, sans-serif;
-
+    flex-direction: column-reverse font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    padding: 220px;
+    marging: 64px;
 }
 
 .education {
-    margin-top: 5vh;
-    padding-right: 10vh;
+    display: flex;
+    padding: 40px
+}
 
+.experience {
+    display: flex;
+}
+
+.buttons {
+    font-size: 50px;
+    display: flex;
+}
+
+
+
+/* footer styling */
+footer {
+    background-color: #808080;
+    text-align: center;
+}
+
+
+#bottom {
+    padding: 0;
+    margin: 0;
+    background-image: linear-gradient(#021e3d, #034da6);
+    text-align: center;
+    color: white;
+
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.highfooter {
+    width: 100%;
+    margin: 0;
+    padding: 15px 0;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border-left: none;
+    border-right: none;
+
+}
+
+.btn1 {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+}
+
+.btn2 {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
 }
