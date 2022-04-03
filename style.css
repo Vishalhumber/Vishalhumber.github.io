@@ -6,12 +6,12 @@
     text-align: justify;
 } */
 
-* {
+/* * {
 
     margin: 0;
     padding: 0;
 
-}
+} */
 
 
 
@@ -26,7 +26,7 @@
 
     width: 10vw;
     font-size: 30px;
-    padding: 80px;
+    padding: 20px;
     font-size: 40px;
 }
 
@@ -56,8 +56,8 @@
     margin: 20px auto;
     display: flex;
     justify-content: space-around;
-    font-size: 80px;
-    padding: 70px;
+    font-size: 40px;
+    padding: 20px;
 
 }
 
