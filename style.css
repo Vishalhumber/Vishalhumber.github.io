@@ -74,12 +74,14 @@
     justify-content: center;
     flex-direction: coloumn;
     padding: 30%;
+    background-image: url(/lauren-mancke-aOC7TSLb1o8-unsplash.jpg);
 }
 
 .hello {
     display: flex;
     font-size: 100px;
     flex-direction: column;
+    color: #8cb4e4;
 }
 
 .about {
