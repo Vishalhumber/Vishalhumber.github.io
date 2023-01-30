@@ -407,25 +407,32 @@
 	});
 
 	
-  $("#submit-button").click(function() {
-    var userInput = $("#user-input").val();
-    var apiKey = "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";
-    $.ajax({
-      url: "https://api.openai.com/v1/engines/davinci/completions",
-      type: "POST",
-      headers: {
-        "Authorization": "Bearer " + apiKey,
-        "Content-Type": "application/json"
-      },
-      data: JSON.stringify({
-        "prompt": userInput,
-        "max_tokens": 100
-      }),
-      success: function(response) {
-        $("#chatbot-response").text(response.choices[0].text);
-      }
-    });
-  });
+	
+	$("#submit-button").click(function() {
+	  var userInput = $("#user-input").val();
+	  var apiKey = "SPO6GUQEH2P2NLFT2626KAJTMOXQAI7O";
+	  $.ajax({
+		url: "https://api.wit.ai/message?v=20230129&q=",
+		type: "GET",
+		headers: {
+		  "Authorization": "Bearer " + apiKey  //curl \
+		  //-H "Authorization: Bearer SPO6GUQEH2P2NLFT2626KAJTMOXQAI7O" \
+		  //"https://api.wit.ai/message?v=20230129&q="
+		},
+		data: {
+		  "q": userInput
+		},
+		success: function(response) {
+		  var intent = response._text;
+		  var entities = response.entities;
+		  //process the intent and entities to generate the chatbot's response
+		  $("#chatbot-response").text(chatbotResponse);
+		}
+	  });
+	});
+  
+
+ 
 
 
 
