@@ -406,4 +406,11 @@
 
 	});
 
+	$("#submit-button").click(function() {
+		var userInput = $("#user-input").val();
+		$("#chatbot-response").text("You said: " + userInput);
+	  });
+
+
+
 })(jQuery);
