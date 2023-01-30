@@ -406,10 +406,28 @@
 
 	});
 
-	$("#submit-button").click(function() {
-		var userInput = $("#user-input").val();
-		$("#chatbot-response").text("You said: " + userInput);
-	  });
+	
+  $("#submit-button").click(function() {
+    var userInput = $("#user-input").val();
+    var apiKey = "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";
+    $.ajax({
+      url: "https://api.openai.com/v1/engines/davinci/completions",
+      type: "POST",
+      headers: {
+        "Authorization": "Bearer " + apiKey,
+        "Content-Type": "application/json"
+      },
+      data: JSON.stringify({
+        "prompt": userInput,
+        "max_tokens": 100
+      }),
+      success: function(response) {
+        $("#chatbot-response").text(response.choices[0].text);
+      }
+    });
+  });
+
+
 
 
 
