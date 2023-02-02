@@ -408,28 +408,28 @@
 
 	
 	
-	$("#submit-button").click(function() {
-	  var userInput = $("#user-input").val();
-	  var apiKey = "SPO6GUQEH2P2NLFT2626KAJTMOXQAI7O";
-	  $.ajax({
-		url: "https://api.wit.ai/message?v=20230129&q=",
-		type: "GET",
-		headers: {
-		  "Authorization": "Bearer " + apiKey  //curl \
-		  //-H "Authorization: Bearer SPO6GUQEH2P2NLFT2626KAJTMOXQAI7O" \
-		  //"https://api.wit.ai/message?v=20230129&q="
-		},
-		data: {
-		  "q": userInput
-		},
-		success: function(response) {
-		  var intent = response._text;
-		  var entities = response.entities;
-		  //process the intent and entities to generate the chatbot's response
-		  $("#chatbot-response").text(chatbotResponse);
-		}
-	  });
-	});
+	// $("#submit-button").click(function() {
+	//   var userInput = $("#user-input").val();
+	//   var apiKey = "SPO6GUQEH2P2NLFT2626KAJTMOXQAI7O";
+	//   $.ajax({
+	// 	url: "https://api.wit.ai/message?v=20230129&q=",
+	// 	type: "GET",
+	// 	headers: {
+	// 	  "Authorization": "Bearer " + apiKey  //curl \
+	// 	  //-H "Authorization: Bearer SPO6GUQEH2P2NLFT2626KAJTMOXQAI7O" \
+	// 	  //"https://api.wit.ai/message?v=20230129&q="
+	// 	},
+	// 	data: {
+	// 	  "q": userInput
+	// 	},
+	// 	success: function(response) {
+	// 	  var intent = response._text;
+	// 	  var entities = response.entities;
+	// 	  //process the intent and entities to generate the chatbot's response
+	// 	  $("#chatbot-response").text(chatbotResponse);
+	// 	}
+	//   });
+	// }); for later experiment
   
 
  
