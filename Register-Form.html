@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register-Form</title>
+</head>
+<body>
+    <fieldset>
+<form>
+
+    <label for="Empnumber">Employee Number: </label>
+    <input type="number" id="Empnumber" name="Empnumber"><br><br>
+    <label for="Ename">Employee name: </label>
+    <input type="text" id="Ename" name="Ename"><br><br>
+    <label for="Jobtitle">Job Title: </label>
+    <input list="Jobtitle" name="Jobtitle">
+    <datalist id="Jobtitle">
+      <option value="Programmer">
+      <option value="Sales Associate">
+      <option value="IT Specialist">
+      <option value="Scrum Master">
+      <option value="Research Associate">
+
+ </datalist>
+ <br>
+ <br>
+ <br>
+
+ <label for="Department">Department:</label>
+ <input type="radio" id="DepartmentChoice1" name="Department" value="IT" />
+      <label for="DepartmentChoice1">IT</label>
+      <input type="radio" id="DepartmentChoice2" name="Department" value="Finance" />
+      <label for="DepartmentChoice2">Finance:</label>
+      <input type="radio" id="DepartmentChoice3" name="Department" value="Sales" />
+      <label for="DepartmentChoice3">Sales:</label>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <input type="submit" value="Register">
+
+
+
+</form>
+
+</fieldset>
+    
+</body>
+</html>
