@@ -1596,3 +1596,9 @@
 		body.is-loading #footer {
 			opacity: 0;
 		}
+		#pingpongCanvas {
+			display: block;
+			margin: 0 auto;
+			border: 1px solid #000; /* Add a border for visibility */
+		}
+		
