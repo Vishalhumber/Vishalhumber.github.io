@@ -21,6 +21,23 @@ function makeMove(index) {
         }
     }
 }
+//restart game  function to tictactoe.js
+function restartGame() {
+    // Reset game-related variables and clear the board
+    currentPlayer = 'X';
+    gameBoard = ['', '', '', '', '', '', '', '', ''];
+    gameActive = true;
+
+    // Clear the cell content on the HTML board
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach(cell => {
+        cell.innerText = '';
+    });
+
+    // Update status message
+    document.getElementById('status').innerText = `Player ${currentPlayer}'s turn`;
+}
+
 
 function checkWinner() {
     const winPatterns = [

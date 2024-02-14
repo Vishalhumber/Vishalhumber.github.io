@@ -1651,3 +1651,14 @@
 .cell:hover {
     background-color: #D2B48C; /* Tan color for a slight change on hover */
 }
+
+/* Updated CSS to center the Tic Tac Toe board and place the restart button on the right side */
+.board-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-container {
+    margin-left: 20px; /* Adjust margin as needed */
+}

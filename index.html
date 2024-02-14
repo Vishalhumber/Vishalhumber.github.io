@@ -182,31 +182,39 @@
 							<!--new article to include games -->
 							<article id="games">
 								<h2 class="major">Games</h2>
-								<h3 >1. Unending Game of Ping Pong, You never lose!</h3>
-								<!-- <span class="image main"><img src="images/aboutme.jpg" alt="" /></span> -->
 							
-								<!-- Canvas for the Ping Pong game -->
+								<h3>1. Unending Game of Ping Pong, You never lose!</h3>
 								<canvas id="pingpongCanvas" width="400" height="300"></canvas>
 								<script src="./assets/js/pingpong.js"></script>
-
+							
 								<hr> <!-- Add a horizontal line for separation -->
+							
 								<h3>2. Tic Tac Toe</h3>
-								<!-- Div for the Tic Tac Toe game -->
-								<div class="board" id="board">
-									<!-- Tic Tac Toe cells -->
-									<div class="cell" onclick="makeMove(0)"></div>
-									<div class="cell" onclick="makeMove(1)"></div>
-									<div class="cell" onclick="makeMove(2)"></div>
-									<div class="cell" onclick="makeMove(3)"></div>
-									<div class="cell" onclick="makeMove(4)"></div>
-									<div class="cell" onclick="makeMove(5)"></div>
-									<div class="cell" onclick="makeMove(6)"></div>
-									<div class="cell" onclick="makeMove(7)"></div>
-									<div class="cell" onclick="makeMove(8)"></div>
+								<div class="board-container">
+									<div class="board" id="board">
+										<!-- Tic Tac Toe cells -->
+										<div class="cell" onclick="makeMove(0)"></div>
+										<div class="cell" onclick="makeMove(1)"></div>
+										<div class="cell" onclick="makeMove(2)"></div>
+										<div class="cell" onclick="makeMove(3)"></div>
+										<div class="cell" onclick="makeMove(4)"></div>
+										<div class="cell" onclick="makeMove(5)"></div>
+										<div class="cell" onclick="makeMove(6)"></div>
+										<div class="cell" onclick="makeMove(7)"></div>
+										<div class="cell" onclick="makeMove(8)"></div>
+									</div>
+							
+									<!-- Restart button -->
+									<div class="button-container">
+										<button onclick="restartGame()">Restart Game</button>
+									</div>
 								</div>
+							
 								<p id="status"></p>
+							
 								<script src="./assets/js/tictactoe.js"></script>
 							</article>
+							
 						
 							
 			
