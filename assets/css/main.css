@@ -1619,14 +1619,20 @@
 			pointer-events: none;
 		}
 /* Add this CSS for styling the Tic Tac Toe board with woodish color */
+/* Add this CSS for styling the Tic Tac Toe board with woodish color */
 .board {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     grid-gap: 5px;
+    margin: auto; /* Center the board */
     margin-bottom: 20px;
+}
+
+.cell-container {
     background-color: #8B4513; /* SaddleBrown color for a woodish background */
     padding: 10px;
     border-radius: 10px; /* Add some border-radius for a softer look */
+    display: inline-block;
 }
 
 .cell {
@@ -1646,4 +1652,3 @@
 .cell:hover {
     background-color: #D2B48C; /* Tan color for a slight change on hover */
 }
-
