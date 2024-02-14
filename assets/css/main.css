@@ -1618,8 +1618,7 @@
 			border-radius: 50%;
 			pointer-events: none;
 		}
-/* Add this CSS for styling the Tic Tac Toe board with woodish color */
-/* Add this CSS for styling the Tic Tac Toe board with woodish color */
+
 .board {
     display: grid;
     grid-template-columns: repeat(3, 100px);
