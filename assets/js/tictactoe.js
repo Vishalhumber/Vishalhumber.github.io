@@ -55,3 +55,34 @@ function checkWinner() {
 
     return false;
 }
+
+
+function calculateSlope() {
+    const D = parseFloat(document.getElementById("pipeDiameter").value);
+    const L = parseFloat(document.getElementById("pipeLength").value);
+    const SIE = parseFloat(document.getElementById("startInvert").value);
+    const E = parseFloat(document.getElementById("endInvert").value);
+
+    if (D <= 0 || L <= 0) {
+        alert("Diameter and Length should be positive numbers.");
+        return;
+    }
+
+    const slopePercentage = ((E - SIE) / L) * 100;
+    const ID = E - SIE;
+    const slopeRatio = L / ID;
+
+    document.getElementById("slopeResult").textContent = slopePercentage.toFixed(2) + " %";
+    document.getElementById("invertDrop").textContent = ID.toFixed(2);
+    document.getElementById("slopeRatio").textContent = slopeRatio.toFixed(2);
+}
+
+function resetFields() {
+    document.getElementById("pipeDiameter").value = "";
+    document.getElementById("pipeLength").value = "";
+    document.getElementById("startInvert").value = "";
+    document.getElementById("endInvert").value = "";
+    document.getElementById("slopeResult").textContent = "";
+    document.getElementById("invertDrop").textContent = "";
+    document.getElementById("slopeRatio").textContent = "";
+}

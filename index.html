@@ -38,7 +38,8 @@
 							<div class="inner">
 								<h1>Vishal Kumar</h1>
 								<p>B.Tech | EIT (PEO) | Humber College Alumni</p>
-								<h2>Software Developer</h2>
+								<h2>Software Developer | C.Eng(IEI)</h2>
+						
 						
 								<!-- Contact Information -->
 								<!-- <p>Phone: +1 (705) 770-1871</p> -->
@@ -100,14 +101,15 @@
 						
 						<nav>
 							<ul>
-								<li><a href="#intro">Intro</a></li>
-								<li><a href="#work">Work</a></li>
-								<li><a href="#membership">Membership</a></li>
+								<li><a href="#intro">Education</a></li>
+								<li><a href="#work">Experience</a></li>
+								<!-- <li><a href="#membership">Membership</a></li> -->
 								<li><a href="#projects">Projects</a></li>
 								<li><a href="#about">About</a></li>
 								<!-- <li><a href="#contact">Contact</a></li> -->
 								<!-- <li><a href="#credits">Credits</a></li> -->
 								<li><a href="#games">Games</a></li>
+								<li><a href="#reading">Reading</a></li>
 
 								<!--<li><a href="#elements">Elements</a></li>-->
 							</ul>
@@ -119,7 +121,7 @@
 
 						<!-- Intro -->
 							<article id="intro">
-								<h2 class="major">Intro</h2>
+								<h2 class="major">Education</h2>
 								<span class="image main"><img src="images/bg_old2.jpg" alt="" /></span>
 								<p>As a highly motivated and results-driven professional with a diverse background in civil engineering, international business and information technology.I have a unique skill set that allows me to excel in a variety of industries and roles. I am an EIT (Professional Engineers Ontario) with a B.Tech in Civil Engineering and a Post Graduate Diploma in International Business Operations. I have completed a Post Graduate Diploma in  Information Technology Solutions qualification at Humber College.</p>
 								<p>Over the past 5 years, I have gained valuable experience in these fields through a range of positions and projects at companies such as Gartner, Teleperformance DIBS, and the Quality Council of India. In my current role as Senior Secretary at the Simcoe County District School Board where I am able to utilize my diverse skills and experiences to support the education of students in elementary and secondary schools in Canada.</p>
@@ -269,6 +271,54 @@
 								<p id="status"></p>
 							
 								<script src="./assets/js/tictactoe.js"></script>
+								
+
+								<div class="calculator-container">
+								
+								
+								
+									<div class="calculator-container">
+										<h1>Pipe Slope Calculator</h1>
+									
+										<div class="input-group">
+											<label for="pipeDiameter">Pipe Diameter (D):</label>
+											<input type="number" id="pipeDiameter" placeholder="Enter diameter">
+										</div>
+									
+										<div class="input-group">
+											<label for="pipeLength">Pipe Length (L):</label>
+											<input type="number" id="pipeLength" placeholder="Enter length">
+										</div>
+									
+										<div class="input-group">
+											<label for="startInvert">Starting Invert Elevation (SIE):</label>
+											<input type="number" id="startInvert" placeholder="Enter start invert">
+										</div>
+									
+										<div class="input-group">
+											<label for="endInvert">Ending Invert Elevation (E):</label>
+											<input type="number" id="endInvert" placeholder="Enter end invert">
+										</div>
+									
+										<button onclick="calculateSlope()">Calculate</button>
+										<button onclick="resetFields()">Reset</button>
+									
+										<div class="output-group">
+											<label for="slopeResult">Slope (%):</label>
+											<output id="slopeResult"></output>
+										</div>
+									
+										<div class="output-group">
+											<label for="invertDrop">Invert Drop (ID):</label>
+											<output id="invertDrop"></output>
+										</div>
+									
+										<div class="output-group">
+											<label for="slopeRatio">Slope Ratio (Horizontal to Vertical):</label>
+											<output id="slopeRatio"></output>
+										</div>
+									</div>
+								
 							</article>
 							
 						
