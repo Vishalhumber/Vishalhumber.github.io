@@ -1818,6 +1818,7 @@
 
 .input-group, .output-group {
     margin-bottom: 20px;
+	color: red;
 }
 
 .label {
