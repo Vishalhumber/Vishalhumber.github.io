@@ -1807,13 +1807,13 @@
 	border: 0;
   }
 
-  /* .calculator-container {
+   .calculator-container {
     max-width: 500px;
     margin: 50px auto;
     padding: 20px;
-    border: 1px solid #121111;
+    border: 1px solid #c1bbbb;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(88, 86, 86, 0.1);
 }
 
 .input-group, .output-group {
@@ -1869,6 +1869,7 @@ button:hover {
   
   .input-group {
 	margin-bottom: 10px;
+	color: #8B4513;
   }
   
   .output-group {
