@@ -28,19 +28,6 @@
       --desktop-max: 1280px;
     }
 
-    html[data-theme="light"] {
-      color-scheme: light;
-      --bg: #edf3ff;
-      --bg-2: #dfeafc;
-      --surface: rgba(255,255,255,0.92);
-      --line: rgba(15,23,42,0.09);
-      --text: #101827;
-      --muted: #53657d;
-      --accent: #0f6ea6;
-      --accent-2: #6d28d9;
-      --shadow: 0 24px 80px rgba(15, 23, 42, 0.1);
-    }
-
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -54,11 +41,29 @@
       font-family: "SF Pro Display", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
       line-height: 1.6;
       transition: background 0.45s ease;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1.2px),
+        radial-gradient(circle, rgba(121,213,255,0.35) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(139,92,246,0.3) 1px, transparent 1.5px);
+      background-size: 120px 120px;
+      background-position: 0 0, 40px 60px, 80px 30px;
+      opacity: 0.4;
+      z-index: 0;
     }
 
     .container {
       width: min(1180px, calc(100% - 28px));
       margin-inline: auto;
+      position: relative;
+      z-index: 1;
     }
 
     img { max-width: 100%; display: block; }
@@ -198,963 +203,800 @@
       transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
     }
     .desktop-panel:hover, .phone-panel:hover, .info-card:hover, .project-card:hover, .skill-card:hover, .contact-panel:hover {
-      transform: translateY(-2px);
-      border-color: rgba(121,213,255,0.4);
-      box-shadow: 0 32px 90px rgba(0,0,0,0.45);
+      transform: translateY(-4px);
+      border-color: rgba(121,213,255,0.42);
     }
 
     .desktop-panel {
-      padding: clamp(24px, 3vw, 40px);
-      min-height: 600px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: linear-gradient(180deg, rgba(16, 24, 35, 0.9), rgba(12, 17, 25, 0.92));
+      padding: 26px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .desktop-panel::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% -30% 0;
+      height: 180px;
+      background: radial-gradient(circle at 20% 20%, rgba(121,213,255,0.18), transparent 55%);
+      pointer-events: none;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      align-self: flex-start;
       padding: 8px 12px;
       border-radius: 999px;
-      font-size: 0.72rem;
+      border: 1px solid rgba(121,213,255,0.25);
+      background: rgba(121,213,255,0.08);
+      color: var(--accent);
       letter-spacing: 0.12em;
       text-transform: uppercase;
+      font-size: 0.7rem;
       font-weight: 700;
-      background: rgba(121,213,255,0.1);
-      color: var(--accent);
-      border: 1px solid rgba(121,213,255,0.26);
-      margin-bottom: 18px;
     }
 
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      display: inline-block;
-      background: var(--accent);
-    }
-
-    .desktop-lead {
-      font-size: clamp(1.08rem, 2vw, 1.42rem);
+    .lead {
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
       color: var(--muted);
-      margin-bottom: 1.2rem;
+      margin-top: 14px;
     }
 
-    .cta-row {
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 10px;
+      gap: 14px;
+      margin-top: 26px;
     }
 
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 16px;
-      padding: 0.9rem 1.25rem;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
+    .button-primary, .button-secondary, .launch-btn {
+      border: 0;
+      border-radius: 14px;
+      padding: 0.9rem 1.4rem;
+      font: inherit;
       font-weight: 700;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    .button:hover {
-      transform: translateY(-2px);
-      border-color: rgba(121,213,255,0.55);
-      box-shadow: 0 10px 22px rgba(121,213,255,0.15);
-    }
-    .button.primary {
-      background: linear-gradient(135deg, var(--accent) 0%, #d9f3ff 100%);
-      color: #07263a;
-      border-color: transparent;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
     }
 
-    .stats {
+    .button-primary, .launch-btn {
+      color: #04131d;
+      background: linear-gradient(135deg, var(--accent), #d2f3ff);
+      box-shadow: 0 18px 36px rgba(121,213,255,0.25);
+    }
+
+    .button-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+    }
+
+    .button-primary:hover, .button-secondary:hover, .launch-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+    }
+
+    .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
       gap: 18px;
       margin-top: 30px;
     }
 
-    .stat {
-      border-top: 1px solid var(--line);
-      padding-top: 18px;
-    }
-    .stat strong { display: block; font-size: 1.2rem; margin-bottom: 4px; }
-    .stat span { color: var(--muted); font-size: 0.84rem; }
-
-    .phone-panel {
-      padding: 18px 14px 14px;
-      background: linear-gradient(180deg, rgba(20, 26, 36, 0.96), rgba(9, 14, 21, 0.96));
-      position: relative;
-      animation: floatCard 5s ease-in-out infinite;
-    }
-
-    @keyframes floatCard {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-    .phone-notch {
-      width: 120px;
-      height: 26px;
-      border-radius: 999px;
-      background: rgba(0,0,0,0.72);
-      margin: 0 auto 16px;
-    }
-
-    .avatar-wrap {
-      border-radius: 28px;
-      overflow: hidden;
+    .stat-box {
+      padding: 18px 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.03);
       border: 1px solid var(--line);
-      background: rgba(121,213,255,0.08);
     }
-    .avatar-wrap img {
-      width: 100%;
-      aspect-ratio: 4 / 4.7;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-    .phone-panel:hover .avatar-wrap img { transform: scale(1.02); }
 
-    .status-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .status-box {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 10px 12px;
-      color: var(--muted);
-      font-size: 0.76rem;
-    }
-    .status-box strong {
-      display: block;
-      margin-top: 5px;
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.08em;
+      margin-bottom: 6px;
       color: var(--text);
-      font-size: 0.92rem;
     }
 
-    .section {
-      padding: 18px 0 8px;
-    }
-    .section-header {
-      margin-bottom: 20px;
-    }
-    .section-header p {
-      max-width: 700px;
-      color: var(--muted);
-    }
-
-    .info-grid, .projects-grid, .skills-grid {
-      display: grid;
-      gap: 18px;
-    }
-    .info-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
-    .projects-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
-    .skills-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-
-    .info-card, .project-card, .skill-card {
-      padding: 22px;
-    }
-    .info-card .index {
-      color: var(--accent);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.72rem;
-      font-weight: 700;
-      margin-bottom: 14px;
-    }
-    .info-card p, .project-card p, .skill-card ul, .contact-panel p {
-      color: var(--muted);
-    }
-
-    .experience-list {
-      display: grid;
-      gap: 18px;
-    }
-    .experience-item {
-      display: grid;
-      grid-template-columns: minmax(180px, 220px) 1fr;
-      gap: 20px;
-      padding: 22px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-      transition: transform 0.22s ease, border-color 0.22s ease;
-    }
-    .experience-item:hover { transform: translateY(-2px); border-color: rgba(121,213,255,0.38); }
-    .exp-company { color: var(--accent); font-weight: 800; margin-bottom: 8px; }
-    .exp-meta { color: var(--muted); font-size: 0.84rem; }
-    .exp-role { margin-bottom: 10px; }
-    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-    .tag {
-      border: 1px solid rgba(121,213,255,0.25);
-      background: rgba(121,213,255,0.08);
-      color: var(--accent);
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      transition: transform 0.2s ease;
-    }
-    .tag:hover { transform: translateY(-1px); }
-
-    .project-card { display: flex; flex-direction: column; }
-    .project-card .bar {
-      width: 60px;
-      height: 5px;
-      border-radius: 999px;
-      margin-bottom: 18px;
-      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
-    }
-    .project-card .button {
-      margin-top: 14px;
-      align-self: flex-start;
-    }
-
-    .skill-card ul {
-      display: grid;
-      gap: 8px;
-    }
-
-    .contact-panel {
-      padding: clamp(24px, 3vw, 38px);
-      background: radial-gradient(circle at top right, rgba(121,213,255,0.12), transparent 42%), var(--surface);
-    }
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    footer {
-      padding: 24px 0 36px;
-      position: relative;
-      z-index: 2;
-    }
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
+    .stat-label {
       color: var(--muted);
       font-size: 0.82rem;
-      border-top: 1px solid var(--line);
-      padding-top: 18px;
-    }
-
-    .space-launch-wrap {
-      display: flex;
-      justify-content: center;
-      margin-top: 18px;
-    }
-
-    .space-launch {
-      appearance: none;
-      border: 1px solid rgba(121,213,255,0.38);
-      border-radius: 999px;
-      background: linear-gradient(135deg, rgba(15, 24, 36, 0.9), rgba(64, 88, 138, 0.5));
-      color: var(--text);
-      font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 0.85rem 1.5rem;
-      cursor: pointer;
-      box-shadow: 0 18px 36px rgba(58, 100, 190, 0.18);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-    .space-launch:hover {
-      transform: translateY(-2px);
-      border-color: rgba(121,213,255,0.8);
-      box-shadow: 0 20px 42px rgba(58, 100, 190, 0.28);
     }
 
-    .space-overlay {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0;
-      transition: opacity 0.7s ease;
+    .profile-card {
+      padding: 14px;
+      display: grid;
+      gap: 14px;
+      min-height: 100%;
+    }
+
+    .user-visual {
+      position: relative;
+      border-radius: 24px;
       overflow: hidden;
-      background: radial-gradient(circle at center, rgba(48, 66, 117, 0.22), rgba(3, 8, 18, 0.7) 32%, rgba(1, 3, 10, 0.96) 72%);
-    }
-
-    .space-overlay::before {
-      content: "";
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      right: 12%;
-      top: 12%;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(168, 192, 255, 0.75) 25%, rgba(118, 98, 223, 0.46) 55%, rgba(13, 25, 55, 0.1) 68%, transparent 100%);
-      box-shadow: 0 0 70px rgba(148, 163, 255, 0.45);
-      opacity: 0;
-      transform: translateY(40px) scale(0.8);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .space-overlay::after {
-      content: "";
-      position: absolute;
-      width: 140px;
-      height: 140px;
-      left: 10%;
-      bottom: 12%;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(214, 230, 255, 0.7) 24%, rgba(136, 213, 255, 0.28) 58%, transparent 100%);
-      box-shadow: 0 0 52px rgba(121,213,255,0.38);
-      opacity: 0;
-      transform: translateY(40px) scale(0.8);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    body.space-mode .space-overlay {
-      opacity: 1;
-    }
-
-    body.space-mode .space-overlay::before,
-    body.space-mode .space-overlay::after {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    .space-overlay .star {
-      position: absolute;
-      left: var(--x);
-      top: var(--y);
-      width: var(--size);
-      height: var(--size);
-      background: rgba(255,255,255,0.9);
-      border-radius: 50%;
-      box-shadow: 0 0 12px rgba(152, 190, 255, 0.9);
-      opacity: 0;
-      animation: twinkle var(--duration) ease-in-out infinite var(--delay);
-    }
-
-    body.space-mode .space-overlay .star {
-      opacity: 1;
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.2; transform: scale(0.8); }
-      50% { opacity: 1; transform: scale(1.25); }
-    }
-
-    .journey-panel {
-      margin-top: 26px;
-      padding: 24px 20px 22px;
-      background: linear-gradient(180deg, rgba(16, 23, 34, 0.92), rgba(11, 15, 23, 0.96));
+      min-height: 240px;
+      background: linear-gradient(180deg, rgba(121,213,255,0.18), rgba(139,92,246,0.08));
       border: 1px solid var(--line);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
     }
 
-    .journey-panel::before {
-      content: "";
-      position: absolute;
-      inset: 0 auto auto 0;
-      width: 100%;
+    .user-visual img {
       height: 100%;
-      background: linear-gradient(90deg, rgba(255,60,60,0.08), rgba(255,255,255,0.03) 38%, rgba(37,99,235,0.12) 100%);
-      pointer-events: none;
+      width: 100%;
+      object-fit: cover;
+      filter: contrast(1.05) saturate(1.1);
     }
 
-    .journey-header {
-      position: relative;
-      z-index: 1;
+    .profile-details {
+      padding: 10px 6px 4px;
+    }
+
+    .mini-label {
+      color: var(--muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+    }
+
+    .row-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .row-list li {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.04);
+      color: var(--muted);
     }
 
-    .journey-header h3 {
+    .row-list strong {
+      color: var(--text);
+    }
+
+    .main-panel {
+      padding: 26px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .section-head h3 {
       margin: 0;
-      font-size: clamp(1.5rem, 2vw, 2.2rem);
     }
 
-    .journey-badge {
+    .tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 8px 12px;
-      border-radius: 999px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
+      border-radius: 999px;
       color: var(--muted);
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
+      font-size: 0.72rem;
       text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: rgba(255,255,255,0.02);
     }
 
-    .journey-track {
+    .project-grid, .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 16px;
+    }
+
+    .project-card, .skill-card, .contact-panel {
+      padding: 18px;
+      background: rgba(255,255,255,0.025);
+    }
+
+    .project-card h4, .skill-card h4 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      letter-spacing: -0.04em;
+    }
+
+    .dot-line {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(121,213,255,0.8);
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .project-card ul, .skill-card ul {
+      padding-left: 0;
+      list-style: none;
+      color: var(--muted);
+      display: grid;
+      gap: 8px;
+    }
+
+    .project-card li, .skill-card li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .contact-panel {
+      padding: 18px 20px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.02);
+      color: var(--muted);
+    }
+
+    .contact-row strong {
+      color: var(--text);
+    }
+
+    .journey-section {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr 1.2fr;
+      gap: 26px;
+      align-items: center;
+      margin: 32px auto 40px;
+      padding: 28px 30px;
+      width: min(1180px, calc(100% - 28px));
+      background: linear-gradient(135deg, rgba(15,21,29,0.92), rgba(16,28,42,0.8));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .journey-section::before {
+      content: "";
+      position: absolute;
+      inset: auto auto -150px -80px;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(121,213,255,0.3), transparent 60%);
+      pointer-events: none;
+    }
+
+    .journey-copy {
       position: relative;
       z-index: 1;
-      height: 150px;
-      border-radius: 22px;
+    }
+
+    .journey-copy p {
+      color: var(--muted);
+      font-size: 1.04rem;
+      margin-bottom: 20px;
+    }
+
+    .launch-scene {
+      position: relative;
+      min-height: 370px;
+      border-radius: 26px;
       border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(121,213,255,0.08), rgba(121,213,255,0.02));
+      background: linear-gradient(180deg, rgba(5,10,18,0.86), rgba(8,17,29,0.75));
       overflow: hidden;
+      box-shadow: inset 0 0 30px rgba(121,213,255,0.08);
     }
 
-    .journey-track::before {
-      content: "";
+    .route {
       position: absolute;
-      left: 0;
-      right: 0;
-      top: 50%;
-      height: 4px;
-      transform: translateY(-50%);
-      background: linear-gradient(90deg, rgba(255,88,88,0.7), rgba(255,255,255,0.3), rgba(58,112,255,0.75));
-      box-shadow: 0 0 18px rgba(121,213,255,0.25);
+      left: 10%;
+      right: 12%;
+      top: 58%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.18), rgba(121,213,255,0.85), rgba(255,255,255,0.22));
+      box-shadow: 0 0 12px rgba(121,213,255,0.3);
+      transform: rotate(-8deg);
+      opacity: 0.7;
     }
 
-    .journey-point {
+    .country-tag {
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      font-size: 0.72rem;
-      color: var(--text);
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(6, 10, 16, 0.25);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(8px);
+      color: var(--muted);
+      z-index: 2;
     }
 
-    .journey-point.india { left: 24px; }
-    .journey-point.canada { right: 22px; }
+    .india-tag { left: 18%; top: 52%; }
+    .canada-tag { right: 16%; top: 28%; }
 
-    .journey-point::before {
-      content: "";
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      display: inline-block;
-      box-shadow: 0 0 12px rgba(255,255,255,0.35);
-    }
-
-    .journey-point.india::before {
-      background: linear-gradient(135deg, #ff9933 0 33%, #ffffff 33% 66%, #138808 66% 100%);
-    }
-    .journey-point.canada::before {
-      background: linear-gradient(90deg, #ff4d4d 0 33%, #ffffff 33% 66%, #ff4d4d 66%);
-    }
-
-    .journey-plane {
+    .planet {
       position: absolute;
-      left: -140px;
-      top: 50%;
+      right: 10%;
+      top: 14%;
+      width: 148px;
+      height: 148px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 32%, #ffefb1 0%, #ffe29e 12%, #ffbf6b 36%, #e78f5c 58%, #7b5ad4 100%);
+      box-shadow:
+        inset -20px -20px 35px rgba(79,41,105,0.6),
+        0 0 25px rgba(255,195,88,0.7),
+        0 0 80px rgba(255,166,78,0.35);
+      opacity: 0.92;
+      transform: scale(0.9);
+      z-index: 1;
+    }
+
+    .planet::before,
+    .planet::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+    }
+
+    .planet::before {
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.68), transparent 18%);
+    }
+
+    .planet::after {
+      inset: 14px;
+      border: 1px solid rgba(255,255,255,0.16);
+      transform: rotate(18deg);
+    }
+
+    .launch-scene .stars,
+    .launch-scene .stars::before,
+    .launch-scene .stars::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background-repeat: repeat;
+      background-size: 180px 180px;
+      opacity: 0.7;
+    }
+
+    .launch-scene .stars {
+      background-image:
+        radial-gradient(circle at 15% 40%, rgba(255,255,255,0.8) 0 1.5px, transparent 2px),
+        radial-gradient(circle at 72% 26%, rgba(255,255,255,0.7) 0 1.5px, transparent 2px),
+        radial-gradient(circle at 58% 78%, rgba(255,255,255,0.8) 0 1.5px, transparent 2px),
+        radial-gradient(circle at 84% 58%, rgba(255,255,255,0.7) 0 1.5px, transparent 2px),
+        radial-gradient(circle at 32% 72%, rgba(255,255,255,0.8) 0 1.5px, transparent 2px),
+        radial-gradient(circle at 50% 48%, rgba(121,213,255,0.8) 0 1.5px, transparent 2px);
+    }
+
+    .bus-wrap {
+      position: absolute;
+      left: 12%;
+      bottom: 18%;
       width: 160px;
-      height: 60px;
-      transform: translateY(-50%);
-      animation: indiaToCanada 8s ease-in-out infinite;
-      filter: drop-shadow(0 18px 20px rgba(31, 78, 164, 0.45));
+      height: 120px;
+      z-index: 3;
+      transition: transform 0.8s ease, opacity 0.8s ease, filter 0.8s ease;
+    }
+
+    .bus {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      animation: busBob 2.4s ease-in-out infinite;
+    }
+
+    .bus-body {
+      position: absolute;
+      inset: 32px 0 0 0;
+      border-radius: 18px 18px 14px 14px;
+      background: linear-gradient(180deg, #ffd166, #ffb703 30%, #ff9f1c 100%);
+      border: 2px solid rgba(255,255,255,0.2);
+      box-shadow: inset 0 -10px 20px rgba(148,79,0,0.12), 0 8px 22px rgba(255,166,0,0.22);
+    }
+
+    .bus-top {
+      position: absolute;
+      top: 18px;
+      left: 12px;
+      right: 12px;
+      height: 26px;
+      border-radius: 8px 8px 14px 14px;
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.14);
+    }
+
+    .windows {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      top: 38px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      height: 34px;
+    }
+
+    .window {
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(201,232,255,0.9), rgba(125,180,255,0.7));
+      border: 1px solid rgba(255,255,255,0.35);
+      box-shadow: inset 0 0 10px rgba(255,255,255,0.2);
+    }
+
+    .bus-front {
+      position: absolute;
+      width: 26px;
+      height: 48px;
+      right: -12px;
+      bottom: 12px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #f8f1d0, #d89a38);
+      border: 2px solid rgba(255,255,255,0.22);
+    }
+
+    .wheel {
+      position: absolute;
+      bottom: -10px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #1a1d25;
+      border: 4px solid #7a7f8a;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.15);
+    }
+
+    .wheel.left { left: 22px; }
+    .wheel.right { right: 26px; }
+
+    .trail {
+      position: absolute;
+      left: -54px;
+      bottom: 54px;
+      width: 80px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid rgba(121,213,255,0.5);
+      border-left-color: transparent;
+      border-top-color: transparent;
+      transform: rotate(-16deg);
+      opacity: 0;
+    }
+
+    body.launching .trail {
+      animation: trailFade 1.8s ease-out forwards;
+    }
+
+    body.launching .bus-wrap {
+      animation: flyToPlanet 3.2s cubic-bezier(0.2, 0.7, 0.15, 1) forwards;
+    }
+
+    body.launching .planet {
+      animation: planetTwinkle 1.8s ease-in-out infinite alternate;
+    }
+
+    body.launching .launch-scene {
+      background: radial-gradient(circle at 50% 25%, rgba(86,124,255,0.28), rgba(5,10,18,0.9) 45%, rgba(4,5,10,0.98));
+    }
+
+    body.launching .route {
       opacity: 1;
-      transition: opacity 0.8s ease, transform 0.8s ease, left 0.8s ease, top 0.8s ease;
+      filter: drop-shadow(0 0 16px rgba(121,213,255,0.7));
     }
 
-    @keyframes indiaToCanada {
-      0% { left: -140px; top: 50%; transform: translateY(-50%) rotate(-2deg); }
-      18% { top: 42%; }
-      35% { top: 48%; }
-      52% { top: 38%; }
-      70% { top: 50%; }
-      100% { left: calc(100% + 20px); top: 50%; transform: translateY(-50%) rotate(2deg); }
+    body.launching .launch-scene .stars {
+      animation: starfieldPulse 2s ease-in-out infinite alternate;
     }
 
-    body.space-mode .journey-plane {
-      animation: spaceDeparture 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    @keyframes busBob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
     }
 
-    @keyframes spaceDeparture {
+    @keyframes flyToPlanet {
       0% {
         opacity: 1;
-        left: 45%;
-        top: 50%;
-        transform: translate(-50%, -50%) scale(1) rotate(0deg);
-        filter: drop-shadow(0 0 18px rgba(121, 213, 255, 0.45));
+        transform: translate(0, 0) scale(1) rotate(-8deg);
+        filter: drop-shadow(0 0 0 rgba(121,213,255,0));
       }
       20% {
         opacity: 1;
-        left: 60%;
-        top: 32%;
-        transform: translate(-50%, -50%) scale(1.12) rotate(-12deg);
+        transform: translate(12px, -24px) scale(1.02) rotate(-10deg);
       }
-      55% {
-        opacity: 0.75;
-        left: 76%;
-        top: 18%;
-        transform: translate(-50%, -50%) scale(0.8) rotate(-18deg);
+      45% {
+        opacity: 1;
+        transform: translate(130px, -110px) scale(1.06) rotate(-14deg);
+        filter: drop-shadow(0 0 20px rgba(121,213,255,0.45));
+      }
+      70% {
+        opacity: 1;
+        transform: translate(220px, -190px) scale(0.94) rotate(-18deg);
       }
       100% {
         opacity: 0;
-        left: 110%;
-        top: -18%;
-        transform: translate(-50%, -50%) scale(0.25) rotate(-30deg);
-        filter: drop-shadow(0 0 30px rgba(121, 213, 255, 0.95));
+        transform: translate(320px, -260px) scale(0.75) rotate(-30deg);
+        visibility: hidden;
       }
     }
 
-    .journey-plane .plane-body {
-      position: absolute;
-      inset: 0;
-      border-radius: 18px 18px 14px 18px;
-      background: linear-gradient(135deg, #78d5ff 0%, #49a6ff 32%, #1c5ae6 100%);
-      border: 1px solid rgba(255,255,255,0.35);
-      overflow: visible;
-    }
-
-    .journey-plane .plane-body::before {
-      content: "";
-      position: absolute;
-      left: 20px;
-      right: 22px;
-      top: 12px;
-      height: 14px;
-      border-radius: 12px 12px 8px 8px;
-      background: rgba(255,255,255,0.7);
-    }
-
-    .journey-plane .plane-body::after {
-      content: "";
-      right: 10px;
-      top: 18px;
-      width: 30px;
-      height: 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.18);
-      transform: rotate(12deg);
-      position: absolute;
-    }
-
-    .fighter-window {
-      position: absolute;
-      width: 22px;
-      height: 18px;
-      top: 14px;
-      background: rgba(228, 243, 255, 0.82);
-      border: 2px solid rgba(23, 65, 150, 0.42);
-      border-radius: 8px;
-    }
-
-    .fighter-window.one { left: 26px; }
-    .fighter-window.two { left: 62px; }
-
-    .wing {
-      position: absolute;
-      width: 40px;
-      height: 12px;
-      top: 20px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.25), rgba(255,255,255,0.6));
-      border: 1px solid rgba(255,255,255,0.25);
-    }
-
-    .wing.left { left: -18px; transform: rotate(-18deg); }
-    .wing.right { right: -18px; transform: rotate(18deg); }
-
-    .jet-tail {
-      position: absolute;
-      left: -14px;
-      top: 18px;
-      width: 22px;
-      height: 18px;
-      background: linear-gradient(135deg, #dfeeff, #7dd3fc);
-      border-radius: 0 0 10px 8px;
-      transform: skewX(-26deg);
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-
-    .journey-plane .wheel {
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      bottom: -8px;
-      background: #101827;
-      border-radius: 50%;
-      border: 4px solid #dfe8ff;
-      box-shadow: inset 0 0 0 2px rgba(17,24,39,0.7);
-    }
-
-    .journey-plane .wheel.one { left: 20px; }
-    .journey-plane .wheel.two { right: 20px; }
-
-    @media (max-width: 980px) {
-      .desktop-grid { grid-template-columns: 1fr; }
-      .desktop-panel { min-height: 0; }
-      .info-grid, .projects-grid, .skills-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 760px) {
-      .desktop-shell {
-        margin: 0;
-        border-radius: 0;
-        border-left: none;
-        border-right: none;
-        max-width: 100%;
+    @keyframes trailFade {
+      0% {
+        opacity: 0;
+        transform: translateX(0) scaleX(0.3) rotate(-16deg);
       }
-      .desktop-topbar { padding: 12px 14px; }
-      .window-title { display: none; }
-      .desktop-controls { min-width: unset; }
-      .desktop-content { padding: 14px; }
-      .info-grid, .projects-grid, .skills-grid, .stats { grid-template-columns: 1fr; }
-      .experience-item { grid-template-columns: 1fr; }
-      .cta-row .button { width: 100%; }
-      .desktop-shell::before { width: 220px; height: 220px; }
-      .space-launch { width: 100%; }
-      .journey-point { font-size: 0.6rem; padding: 7px 8px; }
-      .journey-track { height: 130px; }
+      15% {
+        opacity: 0.75;
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(160px) scaleX(1.2) rotate(-16deg);
+      }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation: none !important; transition: none !important; }
-      html { scroll-behavior: auto; }
+    @keyframes planetTwinkle {
+      0% {
+        transform: scale(0.9);
+        box-shadow: inset -20px -20px 35px rgba(79,41,105,0.6), 0 0 26px rgba(255,195,88,0.7), 0 0 80px rgba(255,166,78,0.35);
+      }
+      100% {
+        transform: scale(1.08);
+        box-shadow: inset -20px -20px 35px rgba(79,41,105,0.6), 0 0 42px rgba(255,223,126,0.9), 0 0 120px rgba(255,166,78,0.55);
+      }
+    }
+
+    @keyframes starfieldPulse {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    @media (max-width: 920px) {
+      .desktop-grid,
+      .journey-section,
+      .project-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .journey-section {
+        padding: 20px 18px;
+      }
+
+      .launch-scene {
+        min-height: 320px;
+      }
     }
   </style>
 </head>
-<body id="top">
-  <div class="space-overlay" aria-hidden="true"></div>
-
+<body>
   <div class="desktop-shell">
-    <header class="desktop-topbar" aria-label="Desktop window controls">
-      <div class="traffic" aria-label="Window controls">
+    <div class="desktop-topbar">
+      <div class="traffic">
         <span class="dot red"></span>
         <span class="dot yellow"></span>
         <span class="dot green"></span>
       </div>
-
       <div class="window-title">Vishal Kumar • Portfolio</div>
-
       <div class="desktop-controls">
-        <button class="icon-btn" type="button" id="theme-toggle" aria-label="Toggle theme">☼</button>
+        <button class="icon-btn" aria-label="Toggle theme">◐</button>
+        <button class="icon-btn" aria-label="Open project menu">☰</button>
       </div>
-    </header>
+    </div>
 
-    <main class="desktop-content">
-      <section class="desktop-grid">
-        <article class="desktop-panel">
-          <span class="eyebrow">Technology · Education · Operations</span>
-          <h1>Hi, I’m Vishal.</h1>
-          <p class="desktop-lead">
-            Education operations and technical support professional helping schools and organizations run smooth, reliable systems and services.
-          </p>
-          <p>
-            I bring experience across public education, enterprise support, troubleshooting, and quality-focused service. My background combines operations, technology support, and business processes to create practical, user-friendly systems and experiences.
-          </p>
+    <div class="desktop-content">
+      <div class="desktop-grid">
+        <div class="desktop-panel">
+          <div class="eyebrow">Technology • Education • Operations</div>
+          <h1>Building systems that move ideas forward.</h1>
+          <p class="lead">I am a problem-solver who blends technology, education, and operations to turn complexity into momentum.</p>
 
-          <div class="cta-row">
-            <a class="button primary" href="#experience">Explore my journey</a>
-            <a class="button" href="#projects">View projects</a>
-            <a class="button" href="https://www.linkedin.com/in/veshaltiwari/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <div class="hero-actions">
+            <a href="#projects" class="button-primary">View Projects</a>
+            <a href="#contact" class="button-secondary">Connect</a>
           </div>
 
-          <div class="stats" aria-label="Quick stats">
-            <div class="stat">
-              <strong>5+ years</strong>
-              <span>experience in support, operations, and education</span>
+          <div class="stats-grid">
+            <div class="stat-box">
+              <div class="stat-number">7+</div>
+              <div class="stat-label">Years</div>
             </div>
-            <div class="stat">
-              <strong>4+ roles</strong>
-              <span>across public sector, technology, and service support</span>
+            <div class="stat-box">
+              <div class="stat-number">20+</div>
+              <div class="stat-label">Projects</div>
             </div>
-            <div class="stat">
-              <strong>Service-first</strong>
-              <span>focused on process clarity, user experience, and reliability</span>
+            <div class="stat-box">
+              <div class="stat-number">∞</div>
+              <div class="stat-label">Curiosity</div>
             </div>
           </div>
-        </article>
+        </div>
 
-        <aside class="phone-panel" aria-label="Profile card">
-          <div class="phone-notch" aria-hidden="true"></div>
-          <div class="avatar-wrap">
-            <img src="images/profilepic.jpeg" alt="Portrait of Vishal Kumar" />
+        <div class="desktop-panel profile-card">
+          <div class="user-visual">
+            <img src="images/profilepic.jpeg" alt="Vishal Kumar profile" />
           </div>
-          <div class="status-grid">
-            <div class="status-box">Role<strong>SOFFA</strong></div>
-            <div class="status-box">Focus<strong>Operations</strong></div>
-            <div class="status-box">Sector<strong>Education</strong></div>
-            <div class="status-box">Location<strong>Ontario</strong></div>
+          <div class="profile-details">
+            <div class="mini-label">Profile</div>
+            <ul class="row-list">
+              <li><span>Role</span><strong>Operations & Tech Lead</strong></li>
+              <li><span>Focus</span><strong>Automation, Processes, Growth</strong></li>
+              <li><span>Based</span><strong>Canada</strong></li>
+            </ul>
           </div>
-        </aside>
-      </section>
+        </div>
+      </div>
 
-      <section class="section" id="about">
-        <div class="section-header">
-          <span class="eyebrow">About</span>
-          <h2>Different disciplines, one connected perspective.</h2>
-          <p>
-            I’m interested in work that brings together communication, thoughtful operations, and useful technology. My background blends engineering, IT, business, and education.
-          </p>
+      <div class="main-panel desktop-panel" id="projects">
+        <div class="section-head">
+          <h3>Selected work</h3>
+          <span class="tag">Impact</span>
         </div>
 
-        <div class="info-grid">
-          <article class="info-card">
-            <div class="index">01 / Background</div>
-            <h3>Engineering + IT + business</h3>
-            <p>
-              My studies and experience combine engineering principles, Information Technology Solutions, and international business practice.
-            </p>
-          </article>
+        <div class="project-grid">
+          <div class="project-card">
+            <h4>Process systems</h4>
+            <ul>
+              <li><span class="dot-line"></span>Operational workflows across teams and systems.</li>
+              <li><span class="dot-line"></span>Documentation, clarity, and performance tracking.</li>
+            </ul>
+          </div>
 
-          <article class="info-card">
-            <div class="index">02 / Experience</div>
-            <h3>People and operations</h3>
-            <p>
-              I’ve worked in public education, sales technology support, technical troubleshooting, and quality assurance across multiple organizations.
-            </p>
-          </article>
+          <div class="project-card">
+            <h4>Digital operations</h4>
+            <ul>
+              <li><span class="dot-line"></span>Tooling and automation for repeatable execution.</li>
+              <li><span class="dot-line"></span>Data-informed decision making and reporting.</li>
+            </ul>
+          </div>
 
-          <article class="info-card">
-            <div class="index">03 / Interests</div>
-            <h3>Technology with purpose</h3>
-            <p>
-              I enjoy exploring AI, machine learning, education technology, and practical applications that support real-world decision-making.
-            </p>
-          </article>
+          <div class="project-card">
+            <h4>Education strategy</h4>
+            <ul>
+              <li><span class="dot-line"></span>Learning experiences built to scale access.</li>
+              <li><span class="dot-line"></span>Human-centered design for adoption and outcomes.</li>
+            </ul>
+          </div>
+
+          <div class="project-card">
+            <h4>Analytical thinking</h4>
+            <ul>
+              <li><span class="dot-line"></span>Turning ambiguity into action with structure.</li>
+              <li><span class="dot-line"></span>Designing systems, not just solving one-off tasks.</li>
+            </ul>
+          </div>
         </div>
-      </section>
+      </div>
 
-      <section class="section" id="experience">
-        <div class="section-header">
-          <span class="eyebrow">Experience</span>
-          <h2>Professional journey</h2>
-          <p>
-            A career spanning public education, enterprise tools, customer support, and service operations.
-          </p>
-        </div>
-
-        <div class="experience-list">
-          <article class="experience-item">
-            <div>
-              <div class="exp-company">Simcoe County District School Board</div>
-              <div class="exp-meta">August 2024 – Present<br>Simcoe, Ontario</div>
-            </div>
-            <div>
-              <h3 class="exp-role">SOFFA</h3>
-              <p>
-                Continuing to support the public education sector with a focus on operations, service delivery, and school-based needs.
-              </p>
-              <div class="tag-row">
-                <span class="tag">Public Education</span>
-                <span class="tag">School Operations</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="experience-item">
-            <div>
-              <div class="exp-company">Simcoe County District School Board</div>
-              <div class="exp-meta">April 2022 – August 2024</div>
-            </div>
-            <div>
-              <h3 class="exp-role">Secretary / OA / SOFFA / DECE / Educator</h3>
-              <p>
-                Experience across school office administration, educational support, and service coordination within the board.
-              </p>
-            </div>
-          </article>
-
-          <article class="experience-item">
-            <div>
-              <div class="exp-company">Gartner</div>
-              <div class="exp-meta">July 2021 – December 2021</div>
-            </div>
-            <div>
-              <h3 class="exp-role">Sales Technology Specialist</h3>
-              <ul>
-                <li>Managed access rights for enterprise sales technology tools including GSP and GSPM.</li>
-                <li>Provided help-desk support and analyzed ticket trends to improve resolution quality.</li>
-                <li>Created onboarding references and trained users on best practices.</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="skills">
-        <div class="section-header">
-          <span class="eyebrow">Skills</span>
-          <h2>What I work with</h2>
+      <div class="main-panel desktop-panel">
+        <div class="section-head">
+          <h3>Capabilities</h3>
+          <span class="tag">Toolbox</span>
         </div>
 
         <div class="skills-grid">
-          <article class="skill-card">
-            <h3>Core skills</h3>
+          <div class="skill-card">
+            <h4>Technical</h4>
             <ul>
-              <li>Operations support</li>
-              <li>Technical troubleshooting</li>
-              <li>Quality assurance</li>
-              <li>Process improvement</li>
+              <li><span class="dot-line"></span>HTML, CSS, JavaScript</li>
+              <li><span class="dot-line"></span>Automation and process design</li>
             </ul>
-          </article>
+          </div>
 
-          <article class="skill-card">
-            <h3>Tooling & systems</h3>
+          <div class="skill-card">
+            <h4>Operations</h4>
             <ul>
-              <li>CRM and enterprise systems</li>
-              <li>Google Workspace and Office tools</li>
-              <li>School-board workflow support</li>
-              <li>Documentation and training</li>
+              <li><span class="dot-line"></span>Workflow optimization</li>
+              <li><span class="dot-line"></span>Reporting and decision support</li>
             </ul>
-          </article>
-        </div>
-      </section>
+          </div>
 
-      <section class="section" id="projects">
-        <div class="section-header">
-          <span class="eyebrow">Projects</span>
-          <h2>Selected work</h2>
-        </div>
+          <div class="skill-card">
+            <h4>Leadership</h4>
+            <ul>
+              <li><span class="dot-line"></span>Cross-functional collaboration</li>
+              <li><span class="dot-line"></span>Strategic planning and execution</li>
+            </ul>
+          </div>
 
-        <div class="projects-grid">
-          <article class="project-card">
-            <div class="bar"></div>
-            <h3>Portfolio redesign</h3>
-            <p>
-              Reimagined my portfolio into a polished Mac-inspired glass layout with iPhone-like simplicity and clarity.
-            </p>
-            <a class="button" href="#top">View concept</a>
-          </article>
-
-          <article class="project-card">
-            <div class="bar"></div>
-            <h3>Business support systems</h3>
-            <p>
-              Focused on simplifying technical workflows, improving access management, and strengthening issue resolution.
-            </p>
-            <a class="button" href="#experience">See experience</a>
-          </article>
-
-          <article class="project-card">
-            <div class="bar"></div>
-            <h3>Education operations</h3>
-            <p>
-              Worked in environments where service quality, communication, and structure directly improve daily outcomes.
-            </p>
-            <a class="button" href="#contact">Connect</a>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="contact">
-        <div class="contact-panel">
-          <span class="eyebrow">Contact</span>
-          <h2>Let’s build something useful.</h2>
-          <p>
-            I’m open to conversations around operations, support systems, education technology, and roles where practical thinking, communication, and reliable execution matter.
-          </p>
-          <div class="contact-links">
-            <a class="button primary" href="mailto:Vishal.kumar181@outlook.com">Email me</a>
-            <a class="button" href="https://www.linkedin.com/in/veshaltiwari/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <div class="skill-card">
+            <h4>Learning</h4>
+            <ul>
+              <li><span class="dot-line"></span>Working across complex environments</li>
+              <li><span class="dot-line"></span>Rapid adaptation and continuous improvement</li>
+            </ul>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
 
-      <section class="journey-panel" aria-label="Journey from India to Canada">
-        <div class="journey-header">
-          <h3>From India to Canada</h3>
-          <span class="journey-badge">Journey</span>
-        </div>
+  <section class="journey-section" id="journey">
+    <div class="journey-copy">
+      <div class="eyebrow">India → Canada</div>
+      <h2>From India to Canada</h2>
+      <p>
+        My journey started in India and continues in Canada — a movement shaped by ambition,
+        resilience, and the courage to keep exploring new possibilities.
+      </p>
+      <button class="launch-btn" id="launchBtn" type="button">Launch to space</button>
+    </div>
 
-        <div class="journey-track" aria-hidden="true">
-          <div class="journey-point india">India</div>
-          <div class="journey-point canada">Canada</div>
+    <div class="launch-scene" aria-label="Launch animation scene">
+      <div class="stars"></div>
+      <div class="route"></div>
+      <div class="country-tag india-tag">India</div>
+      <div class="country-tag canada-tag">Canada</div>
+      <div class="planet" aria-hidden="true"></div>
 
-          <div class="journey-plane">
-            <div class="plane-body">
-              <span class="fighter-window one"></span>
-              <span class="fighter-window two"></span>
-              <span class="wing left"></span>
-              <span class="wing right"></span>
-              <span class="jet-tail"></span>
-              <span class="wheel one"></span>
-              <span class="wheel two"></span>
-            </div>
+      <div class="bus-wrap" aria-hidden="true">
+        <div class="bus">
+          <div class="bus-top"></div>
+          <div class="windows">
+            <span class="window"></span>
+            <span class="window"></span>
+            <span class="window"></span>
+            <span class="window"></span>
           </div>
+          <div class="bus-body"></div>
+          <div class="bus-front"></div>
+          <span class="wheel left"></span>
+          <span class="wheel right"></span>
+          <span class="trail"></span>
         </div>
-      </section>
-    </main>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-      <div class="container footer-inner">
-        <span>© 2026 Vishal Kumar</span>
-        <span>Technology • Education • Operations</span>
+  <div class="container">
+    <div class="contact-panel" id="contact">
+      <div class="section-head">
+        <h3>Connect</h3>
+        <span class="tag">Open to work</span>
       </div>
-      <div class="space-launch-wrap">
-        <button class="space-launch" type="button" aria-label="Launch the page into space">Launch into space</button>
-      </div>
-    </footer>
+
+      <div class="contact-row"><span>Email</span><strong>vishal@example.com</strong></div>
+      <div class="contact-row"><span>LinkedIn</span><strong>/in/vishalkumar</strong></div>
+      <div class="contact-row"><span>Location</span><strong>Canada</strong></div>
+    </div>
   </div>
 
   <script>
-    const root = document.documentElement;
-    const toggle = document.getElementById('theme-toggle');
-    const spaceToggle = document.querySelector('.space-launch');
-    const overlay = document.querySelector('.space-overlay');
-    const journeyPlane = document.querySelector('.journey-plane');
+    const launchBtn = document.getElementById('launchBtn');
+    const body = document.body;
 
-    function syncTheme() {
-      const isLight = root.dataset.theme === 'light';
-      toggle.textContent = isLight ? '☾' : '☼';
-      toggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
-    }
+    launchBtn.addEventListener('click', () => {
+      body.classList.remove('launching');
+      void body.offsetWidth;
+      body.classList.add('launching');
+      body.classList.add('space-mode');
 
-    for (let i = 0; i < 140; i += 1) {
-      const star = document.createElement('span');
-      star.className = 'star';
-      star.style.setProperty('--x', `${Math.random() * 100}%`);
-      star.style.setProperty('--y', `${Math.random() * 100}%`);
-      star.style.setProperty('--size', `${Math.random() * 3 + 1}px`);
-      star.style.setProperty('--duration', `${Math.random() * 6 + 4}s`);
-      star.style.setProperty('--delay', `${Math.random() * 7}s`);
-      overlay.appendChild(star);
-    }
-
-    toggle.addEventListener('click', () => {
-      root.dataset.theme = root.dataset.theme === 'light' ? 'dark' : 'light';
-      syncTheme();
+      window.setTimeout(() => {
+        body.classList.remove('launching');
+      }, 2800);
     });
-
-    spaceToggle.addEventListener('click', () => {
-      document.body.classList.toggle('space-mode');
-      const isSpaceMode = document.body.classList.contains('space-mode');
-      spaceToggle.textContent = isSpaceMode ? 'Back to Earth' : 'Launch into space';
-      spaceToggle.setAttribute('aria-label', isSpaceMode ? 'Return to the page' : 'Launch the page into space');
-
-      if (isSpaceMode) {
-        journeyPlane.style.animation = 'spaceDeparture 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards';
-      } else {
-        journeyPlane.style.animation = 'indiaToCanada 8s ease-in-out infinite';
-        journeyPlane.style.opacity = '1';
-      }
-    });
-
-    syncTheme();
   </script>
 </body>
 </html>
