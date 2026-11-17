@@ -553,6 +553,222 @@
       50% { opacity: 1; transform: scale(1.25); }
     }
 
+    .journey-panel {
+      margin-top: 26px;
+      padding: 24px 20px 22px;
+      background: linear-gradient(180deg, rgba(16, 23, 34, 0.92), rgba(11, 15, 23, 0.96));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .journey-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255,60,60,0.08), rgba(255,255,255,0.03) 38%, rgba(37,99,235,0.12) 100%);
+      pointer-events: none;
+    }
+
+    .journey-header {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .journey-header h3 {
+      margin: 0;
+      font-size: clamp(1.5rem, 2vw, 2.2rem);
+    }
+
+    .journey-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .journey-track {
+      position: relative;
+      z-index: 1;
+      height: 150px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(121,213,255,0.08), rgba(121,213,255,0.02));
+      overflow: hidden;
+    }
+
+    .journey-track::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 4px;
+      transform: translateY(-50%);
+      background: linear-gradient(90deg, rgba(255,88,88,0.7), rgba(255,255,255,0.3), rgba(58,112,255,0.75));
+      box-shadow: 0 0 18px rgba(121,213,255,0.25);
+    }
+
+    .journey-point {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      color: var(--text);
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(6, 10, 16, 0.25);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .journey-point.india { left: 24px; }
+    .journey-point.canada { right: 22px; }
+
+    .journey-point::before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 12px rgba(255,255,255,0.35);
+    }
+
+    .journey-point.india::before {
+      background: linear-gradient(135deg, #ff9933 0 33%, #ffffff 33% 66%, #138808 66% 100%);
+    }
+    .journey-point.canada::before {
+      background: linear-gradient(90deg, #ff4d4d 0 33%, #ffffff 33% 66%, #ff4d4d 66%);
+    }
+
+    .journey-plane {
+      position: absolute;
+      left: -140px;
+      top: 50%;
+      width: 160px;
+      height: 60px;
+      transform: translateY(-50%);
+      animation: indiaToCanada 8s ease-in-out infinite;
+      filter: drop-shadow(0 18px 20px rgba(31, 78, 164, 0.45));
+    }
+
+    @keyframes indiaToCanada {
+      0% { left: -140px; top: 50%; transform: translateY(-50%) rotate(-2deg); }
+      18% { top: 42%; }
+      35% { top: 48%; }
+      52% { top: 38%; }
+      70% { top: 50%; }
+      100% { left: calc(100% + 20px); top: 50%; transform: translateY(-50%) rotate(2deg); }
+    }
+
+    .journey-plane .plane-body {
+      position: absolute;
+      inset: 0;
+      border-radius: 18px 18px 14px 18px;
+      background: linear-gradient(135deg, #78d5ff 0%, #49a6ff 32%, #1c5ae6 100%);
+      border: 1px solid rgba(255,255,255,0.35);
+      overflow: visible;
+    }
+
+    .journey-plane .plane-body::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      right: 22px;
+      top: 12px;
+      height: 14px;
+      border-radius: 12px 12px 8px 8px;
+      background: rgba(255,255,255,0.7);
+    }
+
+    .journey-plane .plane-body::after {
+      content: "";
+      position: absolute;
+      right: 10px;
+      top: 18px;
+      width: 30px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.18);
+      transform: rotate(12deg);
+    }
+
+    .fighter-window {
+      position: absolute;
+      width: 22px;
+      height: 18px;
+      top: 14px;
+      background: rgba(228, 243, 255, 0.82);
+      border: 2px solid rgba(23, 65, 150, 0.42);
+      border-radius: 8px;
+    }
+
+    .fighter-window.one { left: 26px; }
+    .fighter-window.two { left: 62px; }
+
+    .wing {
+      position: absolute;
+      width: 40px;
+      height: 12px;
+      top: 20px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.25), rgba(255,255,255,0.6));
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .wing.left { left: -18px; transform: rotate(-18deg); }
+    .wing.right { right: -18px; transform: rotate(18deg); }
+
+    .jet-tail {
+      position: absolute;
+      left: -14px;
+      top: 18px;
+      width: 22px;
+      height: 18px;
+      background: linear-gradient(135deg, #dfeeff, #7dd3fc);
+      border-radius: 0 0 10px 8px;
+      transform: skewX(-26deg);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .journey-plane .wheel {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      bottom: -8px;
+      background: #101827;
+      border-radius: 50%;
+      border: 4px solid #dfe8ff;
+      box-shadow: inset 0 0 0 2px rgba(17,24,39,0.7);
+    }
+
+    .journey-plane .wheel.one { left: 20px; }
+    .journey-plane .wheel.two { right: 20px; }
+
     @media (max-width: 980px) {
       .desktop-grid { grid-template-columns: 1fr; }
       .desktop-panel { min-height: 0; }
@@ -576,6 +792,8 @@
       .cta-row .button { width: 100%; }
       .desktop-shell::before { width: 220px; height: 220px; }
       .space-launch { width: 100%; }
+      .journey-point { font-size: 0.6rem; padding: 7px 8px; }
+      .journey-track { height: 130px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -818,6 +1036,30 @@
           <div class="contact-links">
             <a class="button primary" href="mailto:Vishal.kumar181@outlook.com">Email me</a>
             <a class="button" href="https://www.linkedin.com/in/veshaltiwari/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="journey-panel" aria-label="Journey from India to Canada">
+        <div class="journey-header">
+          <h3>From India to Canada</h3>
+          <span class="journey-badge">Journey</span>
+        </div>
+
+        <div class="journey-track" aria-hidden="true">
+          <div class="journey-point india">India</div>
+          <div class="journey-point canada">Canada</div>
+
+          <div class="journey-plane">
+            <div class="plane-body">
+              <span class="fighter-window one"></span>
+              <span class="fighter-window two"></span>
+              <span class="wing left"></span>
+              <span class="wing right"></span>
+              <span class="jet-tail"></span>
+              <span class="wheel one"></span>
+              <span class="wheel two"></span>
+            </div>
           </div>
         </div>
       </section>
