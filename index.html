@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vishal Kumar | Technology, Education & Operations</title>
   <meta name="description" content="Portfolio of Vishal Kumar — technology, education, operations, and systems thinking." />
-  <meta name="theme-color" content="#0c0d12" />
-  <link rel="icon" type="image/jpeg" href="images/profilepic.jpeg" />
   <style>
     :root {
       color-scheme: dark;
@@ -24,7 +22,6 @@
       --shadow: 0 28px 80px rgba(0,0,0,0.42);
       --radius-xl: 30px;
       --radius-lg: 22px;
-      --phone-width: 390px;
       --desktop-max: 1280px;
     }
 
@@ -38,42 +35,23 @@
         radial-gradient(circle at top right, rgba(139,92,246,0.18), transparent 35%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       color: var(--text);
-      font-family: "SF Pro Display", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+      font-family: "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
       line-height: 1.6;
       transition: background 0.45s ease;
-      overflow-x: hidden;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1.2px),
-        radial-gradient(circle, rgba(121,213,255,0.35) 1px, transparent 1.5px),
-        radial-gradient(circle, rgba(139,92,246,0.3) 1px, transparent 1.5px);
-      background-size: 120px 120px;
-      background-position: 0 0, 40px 60px, 80px 30px;
-      opacity: 0.4;
-      z-index: 0;
-    }
+    a { color: inherit; text-decoration: none; }
+    p { margin: 0 0 1rem; }
+    h1,h2,h3 { margin: 0 0 0.8rem; line-height: 1.08; letter-spacing: -0.05em; }
+    h1 { font-size: clamp(2.8rem, 6vw, 5rem); }
+    h2 { font-size: clamp(2.1rem, 4vw, 3.2rem); }
+    h3 { font-size: 1.15rem; }
+    ul { margin: 0; padding-left: 1.1rem; }
 
     .container {
       width: min(1180px, calc(100% - 28px));
       margin-inline: auto;
-      position: relative;
-      z-index: 1;
     }
-
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    p { margin: 0 0 1rem; }
-    h1,h2,h3 { margin: 0 0 0.8rem; line-height: 1.08; letter-spacing: -0.05em; }
-    h1 { font-size: clamp(2.8rem, 6vw, 6rem); }
-    h2 { font-size: clamp(2.1rem, 4vw, 3.6rem); }
-    h3 { font-size: 1.15rem; }
-    ul { margin: 0; padding-left: 1.1rem; }
 
     .desktop-shell {
       max-width: var(--desktop-max);
@@ -85,32 +63,7 @@
       box-shadow: var(--shadow);
       backdrop-filter: blur(16px);
       position: relative;
-      transition: transform 0.9s ease, filter 0.9s ease, opacity 0.9s ease;
       z-index: 2;
-    }
-
-    body.space-mode .desktop-shell {
-      transform: scale(0.94) translateY(-10px);
-      filter: brightness(0.75) saturate(1.3);
-      opacity: 0.86;
-    }
-
-    .desktop-shell::before {
-      content: "";
-      position: absolute;
-      inset: -20% auto auto -10%;
-      width: 380px;
-      height: 380px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(121,213,255,0.18), transparent 65%);
-      pointer-events: none;
-      filter: blur(8px);
-      animation: pulseGlow 8s ease-in-out infinite alternate;
-    }
-
-    @keyframes pulseGlow {
-      0% { transform: scale(0.96); opacity: 0.6; }
-      100% { transform: scale(1.08); opacity: 1; }
     }
 
     .desktop-topbar {
@@ -137,12 +90,10 @@
       height: 12px;
       display: inline-block;
       border-radius: 50%;
-      transition: transform 0.2s ease;
     }
     .dot.red { background: var(--red); }
     .dot.yellow { background: var(--yellow); }
     .dot.green { background: var(--green); }
-    .dot:hover { transform: scale(1.08); }
 
     .window-title {
       flex: 1;
@@ -178,9 +129,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.2s ease, border-color 0.2s ease;
     }
-    .icon-btn:hover { transform: translateY(-2px); border-color: rgba(121,213,255,0.55); }
 
     .desktop-content {
       padding: 24px;
@@ -200,803 +149,512 @@
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
-      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+      transition: transform 0.22s ease, border-color 0.22s ease;
     }
     .desktop-panel:hover, .phone-panel:hover, .info-card:hover, .project-card:hover, .skill-card:hover, .contact-panel:hover {
-      transform: translateY(-4px);
-      border-color: rgba(121,213,255,0.42);
+      transform: translateY(-2px);
+      border-color: rgba(121,213,255,0.4);
     }
 
     .desktop-panel {
-      padding: 26px 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .desktop-panel::before {
-      content: "";
-      position: absolute;
-      inset: auto -20% -30% 0;
-      height: 180px;
-      background: radial-gradient(circle at 20% 20%, rgba(121,213,255,0.18), transparent 55%);
-      pointer-events: none;
+      padding: clamp(24px, 3vw, 40px);
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(180deg, rgba(16, 24, 35, 0.9), rgba(12, 17, 25, 0.92));
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      align-self: flex-start;
       padding: 8px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(121,213,255,0.25);
-      background: rgba(121,213,255,0.08);
-      color: var(--accent);
+      font-size: 0.72rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      font-size: 0.7rem;
       font-weight: 700;
+      background: rgba(121,213,255,0.1);
+      color: var(--accent);
+      border: 1px solid rgba(121,213,255,0.26);
+      margin-bottom: 18px;
     }
 
-    .lead {
-      font-size: clamp(1.1rem, 2vw, 1.5rem);
+    .desktop-lead {
+      font-size: clamp(1.08rem, 2vw, 1.42rem);
       color: var(--muted);
-      margin-top: 14px;
+      margin-bottom: 1.2rem;
     }
 
-    .hero-actions {
+    .cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 26px;
+      gap: 12px;
+      margin-top: 10px;
     }
 
-    .button-primary, .button-secondary, .launch-btn {
-      border: 0;
-      border-radius: 14px;
-      padding: 0.9rem 1.4rem;
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-    }
-
-    .button-primary, .launch-btn {
-      color: #04131d;
-      background: linear-gradient(135deg, var(--accent), #d2f3ff);
-      box-shadow: 0 18px 36px rgba(121,213,255,0.25);
-    }
-
-    .button-secondary {
-      color: var(--text);
-      background: rgba(255,255,255,0.04);
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      padding: 0.9rem 1.25rem;
       border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font-weight: 700;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
-
-    .button-primary:hover, .button-secondary:hover, .launch-btn:hover {
+    .button:hover {
       transform: translateY(-2px);
-      filter: brightness(1.06);
+      border-color: rgba(121,213,255,0.55);
+      box-shadow: 0 10px 22px rgba(121,213,255,0.15);
+    }
+    .button.primary {
+      background: linear-gradient(135deg, var(--accent) 0%, #d9f3ff 100%);
+      color: #07263a;
+      border-color: transparent;
     }
 
-    .stats-grid {
+    .stats {
       display: grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
       gap: 18px;
       margin-top: 30px;
     }
 
-    .stat-box {
-      padding: 18px 16px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--line);
+    .stat {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
     }
+    .stat strong { display: block; font-size: 1.2rem; margin-bottom: 4px; }
+    .stat span { color: var(--muted); font-size: 0.84rem; }
 
-    .stat-number {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.08em;
-      margin-bottom: 6px;
-      color: var(--text);
-    }
-
-    .stat-label {
-      color: var(--muted);
-      font-size: 0.82rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .profile-card {
-      padding: 14px;
-      display: grid;
-      gap: 14px;
-      min-height: 100%;
-    }
-
-    .user-visual {
+    .phone-panel {
+      padding: 18px 14px 14px;
+      background: linear-gradient(180deg, rgba(20, 26, 36, 0.96), rgba(9, 14, 21, 0.96));
       position: relative;
-      border-radius: 24px;
+    }
+
+    .phone-notch {
+      width: 120px;
+      height: 26px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.72);
+      margin: 0 auto 16px;
+    }
+
+    .avatar-wrap {
+      border-radius: 28px;
       overflow: hidden;
-      min-height: 240px;
-      background: linear-gradient(180deg, rgba(121,213,255,0.18), rgba(139,92,246,0.08));
       border: 1px solid var(--line);
+      background: rgba(121,213,255,0.08);
     }
-
-    .user-visual img {
-      height: 100%;
+    .avatar-wrap img {
       width: 100%;
+      aspect-ratio: 4 / 4.7;
       object-fit: cover;
-      filter: contrast(1.05) saturate(1.1);
     }
 
-    .profile-details {
-      padding: 10px 6px 4px;
-    }
-
-    .mini-label {
-      color: var(--muted);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 8px;
-    }
-
-    .row-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .status-grid {
       display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
       gap: 10px;
+      margin-top: 12px;
+    }
+    .status-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 0.76rem;
+    }
+    .status-box strong {
+      display: block;
+      margin-top: 5px;
+      color: var(--text);
+      font-size: 0.92rem;
     }
 
-    .row-list li {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.04);
+    .section {
+      padding: 18px 0 8px;
+    }
+    .section-header {
+      margin-bottom: 20px;
+    }
+    .section-header p {
+      max-width: 700px;
       color: var(--muted);
     }
 
-    .row-list strong {
-      color: var(--text);
-    }
-
-    .main-panel {
-      padding: 26px;
+    .info-grid, .projects-grid, .skills-grid {
       display: grid;
       gap: 18px;
     }
+    .info-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .projects-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .skills-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
 
-    .section-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 8px;
+    .info-card, .project-card, .skill-card {
+      padding: 22px;
     }
-
-    .section-head h3 {
-      margin: 0;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 0.72rem;
+    .info-card .index {
+      color: var(--accent);
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      background: rgba(255,255,255,0.02);
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-bottom: 14px;
     }
-
-    .project-grid, .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 16px;
-    }
-
-    .project-card, .skill-card, .contact-panel {
-      padding: 18px;
-      background: rgba(255,255,255,0.025);
-    }
-
-    .project-card h4, .skill-card h4 {
-      margin: 0 0 8px;
-      font-size: 1.05rem;
-      letter-spacing: -0.04em;
-    }
-
-    .dot-line {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 12px rgba(121,213,255,0.8);
-      display: inline-block;
-      margin-right: 10px;
-    }
-
-    .project-card ul, .skill-card ul {
-      padding-left: 0;
-      list-style: none;
+    .info-card p, .project-card p, .skill-card ul, .contact-panel p {
       color: var(--muted);
-      display: grid;
-      gap: 8px;
     }
 
-    .project-card li, .skill-card li {
-      display: flex;
-      align-items: flex-start;
+    .experience-list {
+      display: grid;
+      gap: 18px;
+    }
+    .experience-item {
+      display: grid;
+      grid-template-columns: minmax(180px, 220px) 1fr;
+      gap: 20px;
+      padding: 22px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      transition: transform 0.22s ease, border-color 0.22s ease;
+    }
+    .experience-item:hover { transform: translateY(-2px); border-color: rgba(121,213,255,0.38); }
+    .exp-company { color: var(--accent); font-weight: 800; margin-bottom: 8px; }
+    .exp-meta { color: var(--muted); font-size: 0.84rem; }
+    .exp-role { margin-bottom: 10px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag {
+      border: 1px solid rgba(121,213,255,0.25);
+      background: rgba(121,213,255,0.08);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .project-card { display: flex; flex-direction: column; }
+    .project-card .bar {
+      width: 60px;
+      height: 5px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+    }
+    .project-card .button {
+      margin-top: 14px;
+      align-self: flex-start;
+    }
+
+    .skill-card ul {
+      display: grid;
       gap: 8px;
     }
 
     .contact-panel {
-      padding: 18px 20px;
-      display: grid;
-      gap: 10px;
+      padding: clamp(24px, 3vw, 38px);
+      background: radial-gradient(circle at top right, rgba(121,213,255,0.12), transparent 42%), var(--surface);
     }
-
-    .contact-row {
+    .contact-links {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-wrap: wrap;
       gap: 12px;
-      padding: 12px 14px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(255,255,255,0.02);
-      color: var(--muted);
+      margin-top: 18px;
     }
 
-    .contact-row strong {
-      color: var(--text);
-    }
-
-    .journey-section {
+    footer {
+      padding: 24px 0 36px;
       position: relative;
-      display: grid;
-      grid-template-columns: 1.05fr 1.2fr;
-      gap: 26px;
-      align-items: center;
-      margin: 32px auto 40px;
-      padding: 28px 30px;
-      width: min(1180px, calc(100% - 28px));
-      background: linear-gradient(135deg, rgba(15,21,29,0.92), rgba(16,28,42,0.8));
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .journey-section::before {
-      content: "";
-      position: absolute;
-      inset: auto auto -150px -80px;
-      width: 360px;
-      height: 360px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(121,213,255,0.3), transparent 60%);
-      pointer-events: none;
-    }
-
-    .journey-copy {
-      position: relative;
-      z-index: 1;
-    }
-
-    .journey-copy p {
-      color: var(--muted);
-      font-size: 1.04rem;
-      margin-bottom: 20px;
-    }
-
-    .launch-scene {
-      position: relative;
-      min-height: 370px;
-      border-radius: 26px;
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(5,10,18,0.86), rgba(8,17,29,0.75));
-      overflow: hidden;
-      box-shadow: inset 0 0 30px rgba(121,213,255,0.08);
-    }
-
-    .route {
-      position: absolute;
-      left: 10%;
-      right: 12%;
-      top: 58%;
-      height: 2px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.18), rgba(121,213,255,0.85), rgba(255,255,255,0.22));
-      box-shadow: 0 0 12px rgba(121,213,255,0.3);
-      transform: rotate(-8deg);
-      opacity: 0.7;
-    }
-
-    .country-tag {
-      position: absolute;
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
       z-index: 2;
     }
-
-    .india-tag { left: 18%; top: 52%; }
-    .canada-tag { right: 16%; top: 28%; }
-
-    .planet {
-      position: absolute;
-      right: 10%;
-      top: 14%;
-      width: 148px;
-      height: 148px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 35% 32%, #ffefb1 0%, #ffe29e 12%, #ffbf6b 36%, #e78f5c 58%, #7b5ad4 100%);
-      box-shadow:
-        inset -20px -20px 35px rgba(79,41,105,0.6),
-        0 0 25px rgba(255,195,88,0.7),
-        0 0 80px rgba(255,166,78,0.35);
-      opacity: 0.92;
-      transform: scale(0.9);
-      z-index: 1;
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.82rem;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
     }
 
-    .planet::before,
-    .planet::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
+    @media (max-width: 980px) {
+      .desktop-grid { grid-template-columns: 1fr; }
+      .desktop-panel { min-height: 0; }
+      .info-grid, .projects-grid, .skills-grid { grid-template-columns: 1fr 1fr; }
     }
 
-    .planet::before {
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.68), transparent 18%);
-    }
-
-    .planet::after {
-      inset: 14px;
-      border: 1px solid rgba(255,255,255,0.16);
-      transform: rotate(18deg);
-    }
-
-    .launch-scene .stars,
-    .launch-scene .stars::before,
-    .launch-scene .stars::after {
-      position: absolute;
-      inset: 0;
-      content: "";
-      background-repeat: repeat;
-      background-size: 180px 180px;
-      opacity: 0.7;
-    }
-
-    .launch-scene .stars {
-      background-image:
-        radial-gradient(circle at 15% 40%, rgba(255,255,255,0.8) 0 1.5px, transparent 2px),
-        radial-gradient(circle at 72% 26%, rgba(255,255,255,0.7) 0 1.5px, transparent 2px),
-        radial-gradient(circle at 58% 78%, rgba(255,255,255,0.8) 0 1.5px, transparent 2px),
-        radial-gradient(circle at 84% 58%, rgba(255,255,255,0.7) 0 1.5px, transparent 2px),
-        radial-gradient(circle at 32% 72%, rgba(255,255,255,0.8) 0 1.5px, transparent 2px),
-        radial-gradient(circle at 50% 48%, rgba(121,213,255,0.8) 0 1.5px, transparent 2px);
-    }
-
-    .bus-wrap {
-      position: absolute;
-      left: 12%;
-      bottom: 18%;
-      width: 160px;
-      height: 120px;
-      z-index: 3;
-      transition: transform 0.8s ease, opacity 0.8s ease, filter 0.8s ease;
-    }
-
-    .bus {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      animation: busBob 2.4s ease-in-out infinite;
-    }
-
-    .bus-body {
-      position: absolute;
-      inset: 32px 0 0 0;
-      border-radius: 18px 18px 14px 14px;
-      background: linear-gradient(180deg, #ffd166, #ffb703 30%, #ff9f1c 100%);
-      border: 2px solid rgba(255,255,255,0.2);
-      box-shadow: inset 0 -10px 20px rgba(148,79,0,0.12), 0 8px 22px rgba(255,166,0,0.22);
-    }
-
-    .bus-top {
-      position: absolute;
-      top: 18px;
-      left: 12px;
-      right: 12px;
-      height: 26px;
-      border-radius: 8px 8px 14px 14px;
-      background: rgba(255,255,255,0.12);
-      border: 2px solid rgba(255,255,255,0.14);
-    }
-
-    .windows {
-      position: absolute;
-      left: 20px;
-      right: 20px;
-      top: 38px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      height: 34px;
-    }
-
-    .window {
-      border-radius: 8px;
-      background: linear-gradient(180deg, rgba(201,232,255,0.9), rgba(125,180,255,0.7));
-      border: 1px solid rgba(255,255,255,0.35);
-      box-shadow: inset 0 0 10px rgba(255,255,255,0.2);
-    }
-
-    .bus-front {
-      position: absolute;
-      width: 26px;
-      height: 48px;
-      right: -12px;
-      bottom: 12px;
-      border-radius: 10px;
-      background: linear-gradient(180deg, #f8f1d0, #d89a38);
-      border: 2px solid rgba(255,255,255,0.22);
-    }
-
-    .wheel {
-      position: absolute;
-      bottom: -10px;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #1a1d25;
-      border: 4px solid #7a7f8a;
-      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.15);
-    }
-
-    .wheel.left { left: 22px; }
-    .wheel.right { right: 26px; }
-
-    .trail {
-      position: absolute;
-      left: -54px;
-      bottom: 54px;
-      width: 80px;
-      height: 26px;
-      border-radius: 50%;
-      border: 2px solid rgba(121,213,255,0.5);
-      border-left-color: transparent;
-      border-top-color: transparent;
-      transform: rotate(-16deg);
-      opacity: 0;
-    }
-
-    body.launching .trail {
-      animation: trailFade 1.8s ease-out forwards;
-    }
-
-    body.launching .bus-wrap {
-      animation: flyToPlanet 3.2s cubic-bezier(0.2, 0.7, 0.15, 1) forwards;
-    }
-
-    body.launching .planet {
-      animation: planetTwinkle 1.8s ease-in-out infinite alternate;
-    }
-
-    body.launching .launch-scene {
-      background: radial-gradient(circle at 50% 25%, rgba(86,124,255,0.28), rgba(5,10,18,0.9) 45%, rgba(4,5,10,0.98));
-    }
-
-    body.launching .route {
-      opacity: 1;
-      filter: drop-shadow(0 0 16px rgba(121,213,255,0.7));
-    }
-
-    body.launching .launch-scene .stars {
-      animation: starfieldPulse 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes busBob {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
-    }
-
-    @keyframes flyToPlanet {
-      0% {
-        opacity: 1;
-        transform: translate(0, 0) scale(1) rotate(-8deg);
-        filter: drop-shadow(0 0 0 rgba(121,213,255,0));
+    @media (max-width: 760px) {
+      .desktop-shell {
+        margin: 0;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        max-width: 100%;
       }
-      20% {
-        opacity: 1;
-        transform: translate(12px, -24px) scale(1.02) rotate(-10deg);
-      }
-      45% {
-        opacity: 1;
-        transform: translate(130px, -110px) scale(1.06) rotate(-14deg);
-        filter: drop-shadow(0 0 20px rgba(121,213,255,0.45));
-      }
-      70% {
-        opacity: 1;
-        transform: translate(220px, -190px) scale(0.94) rotate(-18deg);
-      }
-      100% {
-        opacity: 0;
-        transform: translate(320px, -260px) scale(0.75) rotate(-30deg);
-        visibility: hidden;
-      }
-    }
-
-    @keyframes trailFade {
-      0% {
-        opacity: 0;
-        transform: translateX(0) scaleX(0.3) rotate(-16deg);
-      }
-      15% {
-        opacity: 0.75;
-      }
-      100% {
-        opacity: 0;
-        transform: translateX(160px) scaleX(1.2) rotate(-16deg);
-      }
-    }
-
-    @keyframes planetTwinkle {
-      0% {
-        transform: scale(0.9);
-        box-shadow: inset -20px -20px 35px rgba(79,41,105,0.6), 0 0 26px rgba(255,195,88,0.7), 0 0 80px rgba(255,166,78,0.35);
-      }
-      100% {
-        transform: scale(1.08);
-        box-shadow: inset -20px -20px 35px rgba(79,41,105,0.6), 0 0 42px rgba(255,223,126,0.9), 0 0 120px rgba(255,166,78,0.55);
-      }
-    }
-
-    @keyframes starfieldPulse {
-      0% { opacity: 0.6; }
-      100% { opacity: 1; }
-    }
-
-    @media (max-width: 920px) {
-      .desktop-grid,
-      .journey-section,
-      .project-grid,
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .journey-section {
-        padding: 20px 18px;
-      }
-
-      .launch-scene {
-        min-height: 320px;
-      }
+      .desktop-topbar { padding: 12px 14px; }
+      .window-title { display: none; }
+      .desktop-controls { min-width: unset; }
+      .desktop-content { padding: 14px; }
+      .info-grid, .projects-grid, .skills-grid, .stats { grid-template-columns: 1fr; }
+      .experience-item { grid-template-columns: 1fr; }
+      .cta-row .button { width: 100%; }
     }
   </style>
 </head>
-<body>
+<body id="top">
   <div class="desktop-shell">
-    <div class="desktop-topbar">
-      <div class="traffic">
+    <header class="desktop-topbar" aria-label="Desktop window controls">
+      <div class="traffic" aria-label="Window controls">
         <span class="dot red"></span>
         <span class="dot yellow"></span>
         <span class="dot green"></span>
       </div>
+
       <div class="window-title">Vishal Kumar • Portfolio</div>
+
       <div class="desktop-controls">
-        <button class="icon-btn" aria-label="Toggle theme">◐</button>
-        <button class="icon-btn" aria-label="Open project menu">☰</button>
+        <button class="icon-btn" type="button" aria-label="Toggle theme">☼</button>
       </div>
-    </div>
+    </header>
 
-    <div class="desktop-content">
-      <div class="desktop-grid">
-        <div class="desktop-panel">
-          <div class="eyebrow">Technology • Education • Operations</div>
-          <h1>Building systems that move ideas forward.</h1>
-          <p class="lead">I am a problem-solver who blends technology, education, and operations to turn complexity into momentum.</p>
+    <main class="desktop-content">
+      <section class="desktop-grid">
+        <article class="desktop-panel">
+          <span class="eyebrow">Technology · Education · Operations</span>
+          <h1>Hi, I’m Vishal.</h1>
+          <p class="desktop-lead">
+            Education operations and technical support professional helping schools and organizations run smooth, reliable systems and services.
+          </p>
+          <p>
+            I bring experience across public education, enterprise support, troubleshooting, and quality-focused service. My background combines operations, technology support, and business processes to create practical, user-friendly systems and experiences.
+          </p>
 
-          <div class="hero-actions">
-            <a href="#projects" class="button-primary">View Projects</a>
-            <a href="#contact" class="button-secondary">Connect</a>
+          <div class="cta-row">
+            <a class="button primary" href="#experience">Explore my journey</a>
+            <a class="button" href="#projects">View projects</a>
+            <a class="button" href="https://www.linkedin.com/in/veshaltiwari/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           </div>
 
-          <div class="stats-grid">
-            <div class="stat-box">
-              <div class="stat-number">7+</div>
-              <div class="stat-label">Years</div>
+          <div class="stats" aria-label="Quick stats">
+            <div class="stat">
+              <strong>5+ years</strong>
+              <span>experience in support, operations, and education</span>
             </div>
-            <div class="stat-box">
-              <div class="stat-number">20+</div>
-              <div class="stat-label">Projects</div>
+            <div class="stat">
+              <strong>4+ roles</strong>
+              <span>across public sector, technology, and service support</span>
             </div>
-            <div class="stat-box">
-              <div class="stat-number">∞</div>
-              <div class="stat-label">Curiosity</div>
+            <div class="stat">
+              <strong>Service-first</strong>
+              <span>focused on process clarity, user experience, and reliability</span>
             </div>
           </div>
+        </article>
+
+        <aside class="phone-panel" aria-label="Profile card">
+          <div class="phone-notch" aria-hidden="true"></div>
+          <div class="avatar-wrap">
+            <img src="images/profilepic.jpeg" alt="Portrait of Vishal Kumar" />
+          </div>
+          <div class="status-grid">
+            <div class="status-box">Role<strong>SOFFA</strong></div>
+            <div class="status-box">Focus<strong>Operations</strong></div>
+            <div class="status-box">Sector<strong>Education</strong></div>
+            <div class="status-box">Location<strong>Ontario</strong></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section" id="about">
+        <div class="section-header">
+          <span class="eyebrow">About</span>
+          <h2>Different disciplines, one connected perspective.</h2>
+          <p>
+            I’m interested in work that brings together communication, thoughtful operations, and useful technology. My background blends engineering, IT, business, and education.
+          </p>
         </div>
 
-        <div class="desktop-panel profile-card">
-          <div class="user-visual">
-            <img src="images/profilepic.jpeg" alt="Vishal Kumar profile" />
-          </div>
-          <div class="profile-details">
-            <div class="mini-label">Profile</div>
-            <ul class="row-list">
-              <li><span>Role</span><strong>Operations & Tech Lead</strong></li>
-              <li><span>Focus</span><strong>Automation, Processes, Growth</strong></li>
-              <li><span>Based</span><strong>Canada</strong></li>
-            </ul>
-          </div>
+        <div class="info-grid">
+          <article class="info-card">
+            <div class="index">01 / Background</div>
+            <h3>Engineering + IT + business</h3>
+            <p>
+              My studies and experience combine engineering principles, Information Technology Solutions, and international business practice.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <div class="index">02 / Experience</div>
+            <h3>People and operations</h3>
+            <p>
+              I’ve worked in public education, sales technology support, technical troubleshooting, and quality assurance across multiple organizations.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <div class="index">03 / Interests</div>
+            <h3>Technology with purpose</h3>
+            <p>
+              I enjoy exploring AI, machine learning, education technology, and practical applications that support real-world decision-making.
+            </p>
+          </article>
         </div>
-      </div>
+      </section>
 
-      <div class="main-panel desktop-panel" id="projects">
-        <div class="section-head">
-          <h3>Selected work</h3>
-          <span class="tag">Impact</span>
+      <section class="section" id="experience">
+        <div class="section-header">
+          <span class="eyebrow">Experience</span>
+          <h2>Professional journey</h2>
+          <p>
+            A career spanning public education, enterprise tools, customer support, and service operations.
+          </p>
         </div>
 
-        <div class="project-grid">
-          <div class="project-card">
-            <h4>Process systems</h4>
-            <ul>
-              <li><span class="dot-line"></span>Operational workflows across teams and systems.</li>
-              <li><span class="dot-line"></span>Documentation, clarity, and performance tracking.</li>
-            </ul>
-          </div>
+        <div class="experience-list">
+          <article class="experience-item">
+            <div>
+              <div class="exp-company">Simcoe County District School Board</div>
+              <div class="exp-meta">August 2024 – Present<br>Simcoe, Ontario</div>
+            </div>
+            <div>
+              <h3 class="exp-role">SOFFA</h3>
+              <p>
+                Continuing to support the public education sector with a focus on operations, service delivery, and school-based needs.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Public Education</span>
+                <span class="tag">School Operations</span>
+              </div>
+            </div>
+          </article>
 
-          <div class="project-card">
-            <h4>Digital operations</h4>
-            <ul>
-              <li><span class="dot-line"></span>Tooling and automation for repeatable execution.</li>
-              <li><span class="dot-line"></span>Data-informed decision making and reporting.</li>
-            </ul>
-          </div>
+          <article class="experience-item">
+            <div>
+              <div class="exp-company">Simcoe County District School Board</div>
+              <div class="exp-meta">April 2022 – August 2024</div>
+            </div>
+            <div>
+              <h3 class="exp-role">Secretary / OA / SOFFA / DECE / Educator</h3>
+              <p>
+                Experience across school office administration, educational support, and service coordination within the board.
+              </p>
+            </div>
+          </article>
 
-          <div class="project-card">
-            <h4>Education strategy</h4>
-            <ul>
-              <li><span class="dot-line"></span>Learning experiences built to scale access.</li>
-              <li><span class="dot-line"></span>Human-centered design for adoption and outcomes.</li>
-            </ul>
-          </div>
-
-          <div class="project-card">
-            <h4>Analytical thinking</h4>
-            <ul>
-              <li><span class="dot-line"></span>Turning ambiguity into action with structure.</li>
-              <li><span class="dot-line"></span>Designing systems, not just solving one-off tasks.</li>
-            </ul>
-          </div>
+          <article class="experience-item">
+            <div>
+              <div class="exp-company">Gartner</div>
+              <div class="exp-meta">July 2021 – December 2021</div>
+            </div>
+            <div>
+              <h3 class="exp-role">Sales Technology Specialist</h3>
+              <ul>
+                <li>Managed access rights for enterprise sales technology tools including GSP and GSPM.</li>
+                <li>Provided help-desk support and analyzed ticket trends to improve resolution quality.</li>
+                <li>Created onboarding references and trained users on best practices.</li>
+              </ul>
+            </div>
+          </article>
         </div>
-      </div>
+      </section>
 
-      <div class="main-panel desktop-panel">
-        <div class="section-head">
-          <h3>Capabilities</h3>
-          <span class="tag">Toolbox</span>
+      <section class="section" id="skills">
+        <div class="section-header">
+          <span class="eyebrow">Skills</span>
+          <h2>What I work with</h2>
         </div>
 
         <div class="skills-grid">
-          <div class="skill-card">
-            <h4>Technical</h4>
+          <article class="skill-card">
+            <h3>Core skills</h3>
             <ul>
-              <li><span class="dot-line"></span>HTML, CSS, JavaScript</li>
-              <li><span class="dot-line"></span>Automation and process design</li>
+              <li>Operations support</li>
+              <li>Technical troubleshooting</li>
+              <li>Quality assurance</li>
+              <li>Process improvement</li>
             </ul>
-          </div>
+          </article>
 
-          <div class="skill-card">
-            <h4>Operations</h4>
+          <article class="skill-card">
+            <h3>Tooling & systems</h3>
             <ul>
-              <li><span class="dot-line"></span>Workflow optimization</li>
-              <li><span class="dot-line"></span>Reporting and decision support</li>
+              <li>CRM and enterprise systems</li>
+              <li>Google Workspace and Office tools</li>
+              <li>School-board workflow support</li>
+              <li>Documentation and training</li>
             </ul>
-          </div>
+          </article>
+        </div>
+      </section>
 
-          <div class="skill-card">
-            <h4>Leadership</h4>
-            <ul>
-              <li><span class="dot-line"></span>Cross-functional collaboration</li>
-              <li><span class="dot-line"></span>Strategic planning and execution</li>
-            </ul>
-          </div>
+      <section class="section" id="projects">
+        <div class="section-header">
+          <span class="eyebrow">Projects</span>
+          <h2>Selected work</h2>
+        </div>
 
-          <div class="skill-card">
-            <h4>Learning</h4>
-            <ul>
-              <li><span class="dot-line"></span>Working across complex environments</li>
-              <li><span class="dot-line"></span>Rapid adaptation and continuous improvement</li>
-            </ul>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="bar"></div>
+            <h3>Portfolio redesign</h3>
+            <p>
+              Reimagined my portfolio into a polished Mac-inspired glass layout with iPhone-like simplicity and clarity.
+            </p>
+            <a class="button" href="#top">View concept</a>
+          </article>
+
+          <article class="project-card">
+            <div class="bar"></div>
+            <h3>Business support systems</h3>
+            <p>
+              Focused on simplifying technical workflows, improving access management, and strengthening issue resolution.
+            </p>
+            <a class="button" href="#experience">See experience</a>
+          </article>
+
+          <article class="project-card">
+            <div class="bar"></div>
+            <h3>Education operations</h3>
+            <p>
+              Worked in environments where service quality, communication, and structure directly improve daily outcomes.
+            </p>
+            <a class="button" href="#contact">Connect</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="contact-panel">
+          <span class="eyebrow">Contact</span>
+          <h2>Let’s build something useful.</h2>
+          <p>
+            I’m open to conversations around operations, support systems, education technology, and roles where practical thinking, communication, and reliable execution matter.
+          </p>
+          <div class="contact-links">
+            <a class="button primary" href="mailto:Vishal.kumar181@outlook.com">Email me</a>
+            <a class="button" href="https://www.linkedin.com/in/veshaltiwari/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
         </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© 2026 Vishal Kumar</span>
+        <span>Technology • Education • Operations</span>
       </div>
-    </div>
+    </footer>
   </div>
-
-  <section class="journey-section" id="journey">
-    <div class="journey-copy">
-      <div class="eyebrow">India → Canada</div>
-      <h2>From India to Canada</h2>
-      <p>
-        My journey started in India and continues in Canada — a movement shaped by ambition,
-        resilience, and the courage to keep exploring new possibilities.
-      </p>
-      <button class="launch-btn" id="launchBtn" type="button">Launch to space</button>
-    </div>
-
-    <div class="launch-scene" aria-label="Launch animation scene">
-      <div class="stars"></div>
-      <div class="route"></div>
-      <div class="country-tag india-tag">India</div>
-      <div class="country-tag canada-tag">Canada</div>
-      <div class="planet" aria-hidden="true"></div>
-
-      <div class="bus-wrap" aria-hidden="true">
-        <div class="bus">
-          <div class="bus-top"></div>
-          <div class="windows">
-            <span class="window"></span>
-            <span class="window"></span>
-            <span class="window"></span>
-            <span class="window"></span>
-          </div>
-          <div class="bus-body"></div>
-          <div class="bus-front"></div>
-          <span class="wheel left"></span>
-          <span class="wheel right"></span>
-          <span class="trail"></span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="container">
-    <div class="contact-panel" id="contact">
-      <div class="section-head">
-        <h3>Connect</h3>
-        <span class="tag">Open to work</span>
-      </div>
-
-      <div class="contact-row"><span>Email</span><strong>vishal@example.com</strong></div>
-      <div class="contact-row"><span>LinkedIn</span><strong>/in/vishalkumar</strong></div>
-      <div class="contact-row"><span>Location</span><strong>Canada</strong></div>
-    </div>
-  </div>
-
-  <script>
-    const launchBtn = document.getElementById('launchBtn');
-    const body = document.body;
-
-    launchBtn.addEventListener('click', () => {
-      body.classList.remove('launching');
-      void body.offsetWidth;
-      body.classList.add('launching');
-      body.classList.add('space-mode');
-
-      window.setTimeout(() => {
-        body.classList.remove('launching');
-      }, 2800);
-    });
-  </script>
 </body>
 </html>
